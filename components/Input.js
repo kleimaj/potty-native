@@ -1,5 +1,4 @@
-import styled, { css } from '@emotion/native';
-import { Body } from '../utils';
+import styled from '@emotion/native';
 
 export const Input = styled.TextInput`
   border-bottom-width: 2;
