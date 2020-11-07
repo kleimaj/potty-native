@@ -7,10 +7,12 @@ const Button = styled.TouchableOpacity`
   width: 100%;
   border-radius: 12px;
   padding: 12px;
+  margin: 8px 0;
 `;
 
 export const PrimaryButton = (props) => (
   <Button
+    onPress={props.onPress}
     style={css`
       background-color: black;
     `}
@@ -27,6 +29,7 @@ export const PrimaryButton = (props) => (
 
 export const SecondaryButton = (props) => (
   <Button
+    onPress={props.onPress}
     style={css`
       border: 1px solid black;
     `}

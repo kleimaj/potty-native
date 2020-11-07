@@ -1,13 +1,17 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { Display, Title, Small, Body } from '../utils';
 import { PrimaryButton, SecondaryButton } from '../components';
 import styled, { css } from '@emotion/native';
 
 const Container = styled.View`
   flex: 1;
+  background: white;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  margin: 25px;
-  margin-top: 100px;
+  padding: 25px;
+  padding-top: 100px;
 `;
 const Main = styled.View`
   flex: 1;
@@ -15,17 +19,32 @@ const Main = styled.View`
   width: 100%;
   justify-content: flex-end;
 `;
-export const Splash = () => {
+const ButtonGroup = styled.View`
+  margin-top: 30px;
+`;
+export const Splash = ({ route, navigation }) => {
   return (
     <Container>
+      <StatusBar hidden={true} />
       <Display>Potty Angel</Display>
       <Main>
         <Title>Bathroom finder</Title>
         <Small>
           Discover, Locate, and Review quality bathrooms in your area!
         </Small>
-        <PrimaryButton>Log in</PrimaryButton>
-        <SecondaryButton>Sign up</SecondaryButton>
+        <ButtonGroup>
+          <PrimaryButton
+            onPress={() => {
+              console.log('Login');
+              navigation.navigate('Login');
+            }}
+          >
+            Log in
+          </PrimaryButton>
+          <SecondaryButton onPress={() => navigation.navigate('Signup')}>
+            Sign up
+          </SecondaryButton>
+        </ButtonGroup>
       </Main>
     </Container>
   );
