@@ -5,7 +5,6 @@ import styled, { css } from '@emotion/native';
 import { BackIcon } from '../assets';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
-  Input,
   PrimaryButton,
   SecondaryButton,
   HorizontalRule,
@@ -28,6 +27,9 @@ const Container = styled.View`
 const Main = styled.View`
   width: 100%;
 `;
+const Inputs = styled.View`
+  margin: 18px 0;
+`;
 
 export const Login = ({ route, navigation }) => {
   return (
@@ -37,24 +39,10 @@ export const Login = ({ route, navigation }) => {
           width: 40;
           height: 40;
         `}
+        onPress={() => navigation.navigate('Splash')}
       >
         <BackIcon />
       </TouchableOpacity>
-      {/* <Svg
-        aria-hidden="true"
-        focusable="false"
-        data-prefix="fal"
-        data-icon="chevron-left"
-        class="svg-inline--fa fa-chevron-left fa-w-8"
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 256 512"
-      >
-        <Path
-          fill="black"
-          d="M238.475 475.535l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L50.053 256 245.546 60.506c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0L10.454 247.515c-4.686 4.686-4.686 12.284 0 16.971l211.051 211.05c4.686 4.686 12.284 4.686 16.97-.001z"
-        ></Path>
-      </Svg> */}
       <Header
         style={css`
           align-self: flex-start;
@@ -63,11 +51,15 @@ export const Login = ({ route, navigation }) => {
         Welcome Back
       </Header>
       <Main>
-        <EmailInput placeholder="Email" />
-        <PasswordInput placeholder="Password" secureTextEntry={true} />
+        <Inputs>
+          <EmailInput placeholder="Email" />
+          <PasswordInput placeholder="Password" secureTextEntry={true} />
+        </Inputs>
         <PrimaryButton>Log in</PrimaryButton>
         <HorizontalRule>Or</HorizontalRule>
-        <SecondaryButton>Sign up</SecondaryButton>
+        <SecondaryButton onPress={() => navigation.navigate('Signup')}>
+          Sign up
+        </SecondaryButton>
       </Main>
     </Container>
   );
