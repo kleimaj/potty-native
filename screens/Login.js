@@ -9,6 +9,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   HorizontalRule,
+  EmailInput,
 } from '../components';
 // import Svg, { Path } from 'react-native-svg';
 
@@ -61,7 +62,7 @@ export const Login = ({ route, navigation }) => {
         Welcome Back
       </Header>
       <Main>
-        <Input placeholder="Email" />
+        <EmailInput placeholder="Email" />
         <Input placeholder="Password" secureTextEntry={true} />
         <PrimaryButton>Log in</PrimaryButton>
         <HorizontalRule>Or</HorizontalRule>

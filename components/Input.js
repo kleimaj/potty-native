@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from '@emotion/native';
+import { EmailIcon } from '../assets';
 
 export const Input = styled.TextInput`
   border-bottom-width: 2;
@@ -10,3 +12,12 @@ export const Input = styled.TextInput`
     padding: 0 40px;
   }
 `;
+
+const Flex = styled.View``;
+
+export const EmailInput = ({ placeholder }) => (
+  <Flex>
+    <EmailIcon />
+    <Input placeholder={placeholder} />
+  </Flex>
+);
