@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
@@ -32,6 +32,14 @@ const Inputs = styled.View`
 `;
 
 export const Login = ({ route, navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = useCallback(() => {
+    console.log('Login');
+    console.log(email, password);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container>
       <TouchableOpacity
@@ -55,7 +63,7 @@ export const Login = ({ route, navigation }) => {
           <EmailInput placeholder="Email" />
           <PasswordInput placeholder="Password" secureTextEntry={true} />
         </Inputs>
-        <PrimaryButton>Log in</PrimaryButton>
+        <PrimaryButton onPress={handleSubmit}>Log in</PrimaryButton>
         <HorizontalRule>Or</HorizontalRule>
         <SecondaryButton onPress={() => navigation.navigate('Signup')}>
           Sign up
