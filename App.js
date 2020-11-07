@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Login, Signup, Splash } from './screens';
 import styled from '@emotion/native';
 
 const Container = styled.View`
@@ -18,18 +19,11 @@ const Title = styled.Text`
   color: palevioletred;
 `;
 
+const OnboardingStack = createStackNavigator();
+
 function MapScreen() {
   return (
-    <Container
-    // style={
-    //   // { flex: 1, justifyContent: 'center', alignItems: 'center' }
-    //   css`
-    //     flex: 1;
-    //     justifycontent: 'center';
-    //     alignitems: center;
-    //   `
-    // }
-    >
+    <Container>
       <Title>Map!</Title>
     </Container>
   );
@@ -48,7 +42,12 @@ function ProfileScreen() {
     //   // `
     // }
     >
-      <Title>Signup / Profile</Title>
+      {/* <Title>Signup / Profile</Title> */}
+      <OnboardingStack.Navigator>
+        <OnboardingStack.Screen name="Splash" component={Splash} />
+        <OnboardingStack.Screen name="Signup" component={Signup} />
+        <OnboardingStack.Screen name="Login" component={Login} />
+      </OnboardingStack.Navigator>
     </Container>
   );
 }

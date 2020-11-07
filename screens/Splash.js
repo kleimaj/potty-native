@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+// import styled from '@emotion/native';
 
-export default function Splash() {
+export const Splash = () => {
   return (
     <View>
       <Text>Splash!</Text>
     </View>
   );
-}
+};
