@@ -31,24 +31,25 @@ function MapScreen() {
 
 function ProfileScreen() {
   return (
-    <Container
-    // style={
-    //   { flex: 1, justifyContent: 'center', alignItems: 'center' }}
-    //   // css`
-    //   //   flex: 1;
-    //   //   justifycontent: 'center';
-    //   //   // eslint-disable-next-line prettier/prettier
-    //   //   alignitems: center;
-    //   // `
-    // }
-    >
-      {/* <Title>Signup / Profile</Title> */}
-      <OnboardingStack.Navigator>
-        <OnboardingStack.Screen name="Splash" component={Splash} />
-        <OnboardingStack.Screen name="Signup" component={Signup} />
-        <OnboardingStack.Screen name="Login" component={Login} />
-      </OnboardingStack.Navigator>
-    </Container>
+    // <Container>
+    <OnboardingStack.Navigator>
+      <OnboardingStack.Screen
+        name="Splash"
+        component={Splash}
+        options={{ headerShown: false }}
+      />
+      <OnboardingStack.Screen
+        name="Signup"
+        component={Signup}
+        options={{ headerShown: false }}
+      />
+      <OnboardingStack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+    </OnboardingStack.Navigator>
+    // </Container>
   );
 }
 
