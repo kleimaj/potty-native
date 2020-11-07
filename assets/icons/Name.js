@@ -9,9 +9,10 @@ export const NameIcon = () => {
     <SvgXml
       style={css`
         color: #ccc;
+        position: absolute;
       `}
       xml={icon}
-      width="100%"
+      width="5%"
       height="100%"
     />
   );
