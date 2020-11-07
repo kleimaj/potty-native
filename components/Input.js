@@ -22,10 +22,10 @@ export const EmailInput = (props) => (
   </Flex>
 );
 
-export const NameInput = ({ placeholder }) => (
+export const NameInput = (props) => (
   <Flex>
     <NameIcon />
-    <Input placeholder={placeholder} />
+    <Input {...props} />
   </Flex>
 );
 
