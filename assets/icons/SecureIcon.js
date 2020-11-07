@@ -10,6 +10,7 @@ export const SecureIcon = () => {
       style={css`
         color: #ccc;
         position: absolute;
+        right: 0;
       `}
       xml={icon}
       width="5%"
