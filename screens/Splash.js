@@ -1,8 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { Display, Title, Small, Body } from '../utils';
+import { Display, Title, Small } from '../utils';
 import { PrimaryButton, SecondaryButton } from '../components';
-import styled, { css } from '@emotion/native';
+import styled from '@emotion/native';
 
 const Container = styled.View`
   flex: 1;

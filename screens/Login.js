@@ -4,7 +4,12 @@ import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Input } from '../components';
+import {
+  Input,
+  PrimaryButton,
+  SecondaryButton,
+  HorizontalRule,
+} from '../components';
 // import Svg, { Path } from 'react-native-svg';
 
 const Container = styled.View`
@@ -57,7 +62,10 @@ export const Login = ({ route, navigation }) => {
       </Header>
       <Main>
         <Input placeholder="Email" />
-        <Input placeholder="Password" />
+        <Input placeholder="Password" secureTextEntry={true} />
+        <PrimaryButton>Log in</PrimaryButton>
+        <HorizontalRule>Or</HorizontalRule>
+        <SecondaryButton>Sign up</SecondaryButton>
       </Main>
     </Container>
   );
