@@ -1,5 +1,6 @@
 import React from 'react';
-import { Display, Title, Small } from '../utils';
+import { Display, Title, Small, Body } from '../utils';
+import { PrimaryButton, SecondaryButton } from '../components';
 import styled, { css } from '@emotion/native';
 
 const Container = styled.View`
@@ -23,6 +24,8 @@ export const Splash = () => {
         <Small>
           Discover, Locate, and Review quality bathrooms in your area!
         </Small>
+        <PrimaryButton>Log in</PrimaryButton>
+        <SecondaryButton>Sign up</SecondaryButton>
       </Main>
     </Container>
   );

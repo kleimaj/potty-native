@@ -1,19 +1,42 @@
-import styled from '@emotion/native';
+import React from 'react';
+import styled, { css } from '@emotion/native';
+import { Body } from '../utils';
 
 const Button = styled.TouchableOpacity`
-  flex: 1;
   align-items: center;
   width: 100%;
   border-radius: 12px;
   padding: 12px;
 `;
 
-export const PrimaryButton = styled(Button)`
-  background-color: black;
-  color: white;
-`;
+export const PrimaryButton = (props) => (
+  <Button
+    style={css`
+      background-color: black;
+    `}
+  >
+    <Body
+      style={css`
+        color: white;
+      `}
+    >
+      {props.children}
+    </Body>
+  </Button>
+);
 
-export const SecondaryButton = styled(Button)`
-  border: 1px solid black;
-  color: black;
-`;
+export const SecondaryButton = (props) => (
+  <Button
+    style={css`
+      border: 1px solid black;
+    `}
+  >
+    <Body
+      style={css`
+        color: black;
+      `}
+    >
+      {props.children}
+    </Body>
+  </Button>
+);

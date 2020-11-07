@@ -4,7 +4,7 @@ import styled from '@emotion/native';
 // https://www.pinterest.com/pin/326299935487905443/
 
 const Font = styled.Text`
-  font-family: Avenir-Next;
+  font-family: System;
 `;
 
 // Splash, Modal Titles
