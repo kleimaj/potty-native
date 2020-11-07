@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { EmailIcon, NameIcon } from '../assets';
+import { EmailIcon, NameIcon, PasswordIcon } from '../assets';
 
 export const Input = styled.TextInput`
   border-bottom-width: 2;
@@ -26,5 +26,12 @@ export const NameInput = ({ placeholder }) => (
   <Flex>
     <NameIcon />
     <Input placeholder={placeholder} />
+  </Flex>
+);
+
+export const PasswordInput = ({ placeholder, secureTextEntry }) => (
+  <Flex>
+    <PasswordIcon />
+    <Input placeholder={placeholder} secureTextEntry={secureTextEntry} />
   </Flex>
 );
