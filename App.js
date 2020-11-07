@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+// import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import styled, { css } from '@emotion/native';
+import styled from '@emotion/native';
 
 const Container = styled.View`
   flex: 1;
@@ -17,7 +17,7 @@ const Title = styled.Text`
   color: palevioletred;
 `;
 
-function HomeScreen() {
+function MapScreen() {
   return (
     <Container
     // style={
@@ -29,12 +29,12 @@ function HomeScreen() {
     //   `
     // }
     >
-      <Title>Home!</Title>
+      <Title>Map!</Title>
     </Container>
   );
 }
 
-function SettingsScreen() {
+function ProfileScreen() {
   return (
     <Container
     // style={
@@ -47,7 +47,7 @@ function SettingsScreen() {
     //   // `
     // }
     >
-      <Title>Settings!</Title>
+      <Title>Signup / Profile</Title>
     </Container>
   );
 }
@@ -58,8 +58,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
