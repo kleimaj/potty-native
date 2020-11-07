@@ -38,8 +38,7 @@ export const Login = ({ route, navigation }) => {
   const handleSubmit = useCallback(() => {
     console.log('Login');
     console.log(email, password);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [email, password]);
   return (
     <Container>
       <TouchableOpacity
@@ -60,10 +59,19 @@ export const Login = ({ route, navigation }) => {
       </Header>
       <Main>
         <Inputs>
-          <EmailInput placeholder="Email" />
-          <PasswordInput placeholder="Password" secureTextEntry={true} />
+          <EmailInput
+            placeholder="Email"
+            onChangeText={setEmail}
+            value={email}
+          />
+          <PasswordInput
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={setPassword}
+            value={password}
+          />
         </Inputs>
-        <PrimaryButton onPress={handleSubmit}>Log in</PrimaryButton>
+        <PrimaryButton onPress={() => handleSubmit()}>Log in</PrimaryButton>
         <HorizontalRule>Or</HorizontalRule>
         <SecondaryButton onPress={() => navigation.navigate('Signup')}>
           Sign up

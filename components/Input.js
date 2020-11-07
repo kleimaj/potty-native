@@ -15,10 +15,10 @@ export const Input = styled.TextInput`
 
 const Flex = styled.View``;
 
-export const EmailInput = ({ placeholder }) => (
+export const EmailInput = (props) => (
   <Flex>
     <EmailIcon />
-    <Input placeholder={placeholder} />
+    <Input {...props} />
   </Flex>
 );
 
@@ -29,10 +29,10 @@ export const NameInput = ({ placeholder }) => (
   </Flex>
 );
 
-export const PasswordInput = ({ placeholder, secureTextEntry }) => (
+export const PasswordInput = (props) => (
   <Flex>
     <PasswordIcon />
-    <Input placeholder={placeholder} secureTextEntry={secureTextEntry} />
+    <Input {...props} />
     <SecureIcon />
   </Flex>
 );
