@@ -10,21 +10,26 @@ const Font = styled.Text`
 // Splash, Modal Titles
 export const Display = styled(Font)`
   font-size: 42px;
+  font-weight: bold;
 `;
 
 // Page titles
 export const Header = styled(Font)`
   font-size: 36px;
+  font-weight: bold;
 `;
 
 // Buttons,t abs, cell titles, forms
 export const Title = styled(Font)`
   font-size: 32px;
+  font-weight: bold;
+  line-height: 52;
 `;
 
 // Intro paragraphs, player subhead
 export const Subhead = styled(Font)`
   font-size: 28px;
+  font-weight: bold;
 `;
 
 // Station descriptions
@@ -35,4 +40,5 @@ export const Body = styled(Font)`
 // Small Text - time stamps, footer, informational
 export const Small = styled(Font)`
   font-size: 20px;
+  line-height: 28;
 `;
