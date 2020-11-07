@@ -3,6 +3,8 @@ import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Input } from '../components';
 // import Svg, { Path } from 'react-native-svg';
 
 const Container = styled.View`
@@ -10,22 +12,27 @@ const Container = styled.View`
   background: white;
   width: 100%;
   height: 100%;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   padding: 25px;
   padding-top: 100px;
 `;
 
 const Main = styled.View`
-  flex: 1;
-  margin: 25px;
   width: 100%;
-  justify-content: flex-end;
 `;
 
 export const Login = ({ route, navigation }) => {
   return (
     <Container>
-      <BackIcon />
+      <TouchableOpacity
+        style={css`
+          width: 40;
+          height: 40;
+        `}
+      >
+        <BackIcon />
+      </TouchableOpacity>
       {/* <Svg
         aria-hidden="true"
         focusable="false"
@@ -46,8 +53,12 @@ export const Login = ({ route, navigation }) => {
           align-self: flex-start;
         `}
       >
-        Login!
+        Welcome Back
       </Header>
+      <Main>
+        <Input placeholder="Email" />
+        <Input placeholder="Password" />
+      </Main>
     </Container>
   );
 };
