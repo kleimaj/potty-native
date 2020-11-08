@@ -78,7 +78,7 @@ export const Login = ({ route, navigation }) => {
             />
           </Inputs>
           <PrimaryButton onPress={() => handleSubmit()}>Log in</PrimaryButton>
-          <HorizontalRule>Or</HorizontalRule>
+          <HorizontalRule>or</HorizontalRule>
           <SecondaryButton onPress={() => navigation.navigate('Signup')}>
             Sign up
           </SecondaryButton>
