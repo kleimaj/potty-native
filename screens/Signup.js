@@ -3,6 +3,7 @@ import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
   PrimaryButton,
@@ -32,6 +33,12 @@ const Inputs = styled.View`
   margin: 18px 0;
 `;
 
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
+
 export const Signup = ({ route, navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,44 +49,46 @@ export const Signup = ({ route, navigation }) => {
     console.log(name, email, password);
   }, [name, email, password]);
   return (
-    <Container>
-      <TouchableOpacity
-        style={css`
-          width: 40;
-          height: 40;
-        `}
-        onPress={() => navigation.navigate('Splash')}
-      >
-        <BackIcon />
-      </TouchableOpacity>
-      <Header
-        style={css`
-          align-self: flex-start;
-        `}
-      >
-        Create Account
-      </Header>
-      <Main>
-        <Inputs>
-          <NameInput placeholder="Name" onChangeText={setName} value={name} />
-          <EmailInput
-            placeholder="Email"
-            onChangeText={setEmail}
-            value={email}
-          />
-          <PasswordInput
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={setPassword}
-            value={password}
-          />
-        </Inputs>
-        <PrimaryButton onPress={() => handleSubmit()}>Sign up</PrimaryButton>
-        <HorizontalRule>or</HorizontalRule>
-        <SecondaryButton onPress={() => navigation.navigate('Login')}>
-          Log in
-        </SecondaryButton>
-      </Main>
-    </Container>
+    <DismissKeyboard>
+      <Container>
+        <TouchableOpacity
+          style={css`
+            width: 40;
+            height: 40;
+          `}
+          onPress={() => navigation.navigate('Splash')}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+        <Header
+          style={css`
+            align-self: flex-start;
+          `}
+        >
+          Create Account
+        </Header>
+        <Main>
+          <Inputs>
+            <NameInput placeholder="Name" onChangeText={setName} value={name} />
+            <EmailInput
+              placeholder="Email"
+              onChangeText={setEmail}
+              value={email}
+            />
+            <PasswordInput
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              value={password}
+            />
+          </Inputs>
+          <PrimaryButton onPress={() => handleSubmit()}>Sign up</PrimaryButton>
+          <HorizontalRule>or</HorizontalRule>
+          <SecondaryButton onPress={() => navigation.navigate('Login')}>
+            Log in
+          </SecondaryButton>
+        </Main>
+      </Container>
+    </DismissKeyboard>
   );
 };

@@ -4,6 +4,7 @@ import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
 import {
   PrimaryButton,
   SecondaryButton,
@@ -30,7 +31,11 @@ const Main = styled.View`
 const Inputs = styled.View`
   margin: 18px 0;
 `;
-
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
 export const Login = ({ route, navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,43 +45,45 @@ export const Login = ({ route, navigation }) => {
     console.log(email, password);
   }, [email, password]);
   return (
-    <Container>
-      <TouchableOpacity
-        style={css`
-          width: 40;
-          height: 40;
-        `}
-        onPress={() => navigation.navigate('Splash')}
-      >
-        <BackIcon />
-      </TouchableOpacity>
-      <Header
-        style={css`
-          align-self: flex-start;
-        `}
-      >
-        Welcome Back
-      </Header>
-      <Main>
-        <Inputs>
-          <EmailInput
-            placeholder="Email"
-            onChangeText={setEmail}
-            value={email}
-          />
-          <PasswordInput
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={setPassword}
-            value={password}
-          />
-        </Inputs>
-        <PrimaryButton onPress={() => handleSubmit()}>Log in</PrimaryButton>
-        <HorizontalRule>Or</HorizontalRule>
-        <SecondaryButton onPress={() => navigation.navigate('Signup')}>
-          Sign up
-        </SecondaryButton>
-      </Main>
-    </Container>
+    <DismissKeyboard>
+      <Container>
+        <TouchableOpacity
+          style={css`
+            width: 40;
+            height: 40;
+          `}
+          onPress={() => navigation.navigate('Splash')}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+        <Header
+          style={css`
+            align-self: flex-start;
+          `}
+        >
+          Welcome Back
+        </Header>
+        <Main>
+          <Inputs>
+            <EmailInput
+              placeholder="Email"
+              onChangeText={setEmail}
+              value={email}
+            />
+            <PasswordInput
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={setPassword}
+              value={password}
+            />
+          </Inputs>
+          <PrimaryButton onPress={() => handleSubmit()}>Log in</PrimaryButton>
+          <HorizontalRule>Or</HorizontalRule>
+          <SecondaryButton onPress={() => navigation.navigate('Signup')}>
+            Sign up
+          </SecondaryButton>
+        </Main>
+      </Container>
+    </DismissKeyboard>
   );
 };
