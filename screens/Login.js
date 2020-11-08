@@ -31,11 +31,11 @@ const Main = styled.View`
 const Inputs = styled.View`
   margin: 18px 0;
 `;
-const DismissKeyboard = ({ children }) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-);
+// const DismissKeyboard = ({ children }) => (
+//   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+//     {children}
+//   </TouchableWithoutFeedback>
+// );
 export const Login = ({ route, navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +45,7 @@ export const Login = ({ route, navigation }) => {
     console.log(email, password);
   }, [email, password]);
   return (
-    <DismissKeyboard>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <TouchableOpacity
           style={css`
@@ -84,6 +84,6 @@ export const Login = ({ route, navigation }) => {
           </SecondaryButton>
         </Main>
       </Container>
-    </DismissKeyboard>
+    </TouchableWithoutFeedback>
   );
 };

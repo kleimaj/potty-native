@@ -33,11 +33,11 @@ const Inputs = styled.View`
   margin: 18px 0;
 `;
 
-const DismissKeyboard = ({ children }) => (
-  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    {children}
-  </TouchableWithoutFeedback>
-);
+// const DismissKeyboard = ({ children }) => (
+//   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+//     {children}
+//   </TouchableWithoutFeedback>
+// );
 
 export const Signup = ({ route, navigation }) => {
   const [name, setName] = useState('');
@@ -49,7 +49,7 @@ export const Signup = ({ route, navigation }) => {
     console.log(name, email, password);
   }, [name, email, password]);
   return (
-    <DismissKeyboard>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <TouchableOpacity
           style={css`
@@ -89,6 +89,6 @@ export const Signup = ({ route, navigation }) => {
           </SecondaryButton>
         </Main>
       </Container>
-    </DismissKeyboard>
+    </TouchableWithoutFeedback>
   );
 };
