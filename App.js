@@ -4,7 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login, Signup, Splash } from './screens';
+
 import styled from '@emotion/native';
+import UserModel from './models';
 
 const Container = styled.View`
   flex: 1;
@@ -63,8 +65,11 @@ export default function App() {
     setCurrentUser({ currentUser: userId });
     // set async storage
   }
-  const logout = () => {
-
+  const logout = async() => {
+    // remove from async storage
+    await UserModel.logout()
+    setCurrentUser(null);
+    // navigate to Map or Profile?
   }
   return (
     <NavigationContainer>
