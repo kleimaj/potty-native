@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -56,6 +56,16 @@ function ProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState({
+    // get from async storage
+  });
+  const storeUser = userId => {
+    setCurrentUser({ currentUser: userId });
+    // set async storage
+  }
+  const logout = () => {
+
+  }
   return (
     <NavigationContainer>
       <Tab.Navigator>
