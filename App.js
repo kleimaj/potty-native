@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 // import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,6 +7,7 @@ import { Login, Signup, Splash } from './screens';
 
 import styled from '@emotion/native';
 import UserModel from './models';
+import { UserContextProvider, UserContext } from './hooks';
 
 const Container = styled.View`
   flex: 1;
@@ -58,25 +59,28 @@ function ProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({
-    // get from async storage
-  });
-  const storeUser = userId => {
-    setCurrentUser({ currentUser: userId });
-    // set async storage
+  const [currentUser, setUser] = useContext(UserContext);
+
+  // To be moved to onboarding screens
+  const storeUser = (userId, name) => {
+      setCurrentUser({ currentUser: userId, name });
+      // set async storage
   }
+  // To be moved to onboarding screens
   const logout = async() => {
-    // remove from async storage
-    await UserModel.logout()
-    setCurrentUser(null);
-    // navigate to Map or Profile?
+      // remove from async storage
+      await UserModel.logout()
+      setUser(null);
+      // navigate to Map or Profile?
   }
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <UserContextProvider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Map" component={MapScreen} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </UserContextProvider>
   );
 }
