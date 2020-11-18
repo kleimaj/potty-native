@@ -39,9 +39,10 @@ const Inputs = styled.View`
 //   </TouchableWithoutFeedback>
 // );
 export const Login = ({ route, navigation }) => {
+  const [user, setUser] = useContext(UserContext);
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useContext(UserContext);
 
   const handleSubmit = useCallback(async() => {
     console.log('Login');
