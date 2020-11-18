@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
@@ -12,6 +12,8 @@ import {
   EmailInput,
   PasswordInput,
 } from '../components';
+import UserModel from '../models';
+import {UserContext} from '../hooks';
 // import Svg, { Path } from 'react-native-svg';
 
 const Container = styled.View`
@@ -39,10 +41,20 @@ const Inputs = styled.View`
 export const Login = ({ route, navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useContext(UserContext);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async() => {
     console.log('Login');
-    console.log(email, password);
+    const data = await UserModel.login({email, password});
+    console.log(data);
+    if (!data.user) {
+      console.log("ERROR, something went wrong")
+      return false;
+    }
+    // store user
+    setUser({userId: data.id, name: data.name});
+    // set asyncStorage
+
   }, [email, password]);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

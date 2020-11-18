@@ -63,7 +63,7 @@ export default function App() {
 
   // To be moved to onboarding screens
   const storeUser = (userId, name) => {
-      setCurrentUser({ currentUser: userId, name });
+      setUser({ currentUser: userId, name });
       // set async storage
   }
   // To be moved to onboarding screens
