@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
-// import Back from './back.svgx';
 import { BackIcon } from '../assets';
 import { TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
