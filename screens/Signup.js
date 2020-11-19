@@ -3,7 +3,7 @@ import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
-import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
   PrimaryButton,
@@ -53,17 +53,17 @@ export const Signup = ({ route, navigation }) => {
     // console.log(name, email, password);
     const response = await UserModel.create({ name, email, password });
     console.log(response);
-    setUser({ userId: response.id, name });
+    setUser({ userId: response.id, name: response.name });
     // set async storage
     try {
-      await AsyncStorage.setItem('user', response.id);
+      await AsyncStorage.setItem('user', JSON.stringify(response));
       console.log('Success');
       // navigate
       navigation.navigate('Map');
-    } catch {
-      console.error('Error setting user to async storage');
+    } catch (error) {
+      console.error(error);
     }
-  }, [name, email, password]);
+  }, [name, email, password, navigation, setUser]);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>

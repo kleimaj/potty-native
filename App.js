@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-// import { Text, View } from 'react-native';
+// import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -25,9 +25,11 @@ const Title = styled.Text`
 const OnboardingStack = createStackNavigator();
 
 function MapScreen() {
+  const [currentUser, setUser] = useContext(UserContext);
+  console.log('Currently logged in:', currentUser);
   return (
     <Container>
-      <Title>Map!</Title>
+      <Title>{currentUser.name ? currentUser.name : 'Map!'}</Title>
     </Container>
   );
 }
@@ -63,16 +65,17 @@ export default function App() {
 
   // To be moved to onboarding screens
   const storeUser = (userId, name) => {
-      setUser({ currentUser: userId, name });
-      // set async storage
-  }
+    setUser({ currentUser: userId, name });
+    // set async storage
+  };
   // To be moved to onboarding screens
-  const logout = async() => {
-      // remove from async storage
-      await UserModel.logout()
-      setUser(null);
-      // navigate to Map or Profile?
-  }
+  const logout = async () => {
+    // remove from async storage
+    await UserModel.logout();
+    setUser(null);
+    // navigate to Map or Profile?
+  };
+  console.log('APP USER', currentUser);
   return (
     <UserContextProvider>
       <NavigationContainer>
