@@ -13,7 +13,7 @@ import {
   PasswordInput,
   NameInput,
 } from '../components';
-import UserModel from '../models';
+import UserModel from '../models/user';
 import { UserContext } from '../hooks';
 // import Svg, { Path } from 'react-native-svg';
 
