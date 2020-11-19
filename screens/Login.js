@@ -46,23 +46,23 @@ export const Login = ({ route, navigation }) => {
 
   const handleSubmit = useCallback(async () => {
     console.log('Login');
-    const data = await UserModel.login({ email, password });
-    console.log(data);
-    if (!data.user) {
-      console.log('ERROR, something went wrong');
-      return false;
-    }
+    const response = await UserModel.login({ email, password });
+    console.log(response);
+    // if (!response.user) {
+    //   console.log('ERROR, something went wrong');
+    //   return false;
+    // }
     // store user
-    setUser({ userId: data.id, name: data.name });
+    setUser({ userId: response.id, name: response.name });
     // set asyncStorage
     try {
-      await AsyncStorage.setItem('user', data.id);
+      await AsyncStorage.setItem('user', JSON.stringify(response));
       console.log('Success');
       navigation.navigate('Map');
-    } catch {
-      console.error('Error settng Async Storage');
+    } catch (error) {
+      console.error(error);
     }
-  }, [email, password]);
+  }, [email, password, navigation, setUser]);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
