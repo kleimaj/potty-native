@@ -75,7 +75,7 @@ export default function App() {
     setUser(null);
     // navigate to Map or Profile?
   };
-  console.log('APP USER', currentUser);
+  // console.log('APP USER', currentUser);
   return (
     <UserContextProvider>
       <NavigationContainer>
