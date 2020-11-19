@@ -14,7 +14,7 @@ import {
   NameInput,
 } from '../components';
 import UserModel from '../models';
-import {UserContext} from '../hooks';
+import { UserContext } from '../hooks';
 // import Svg, { Path } from 'react-native-svg';
 
 const Container = styled.View`
@@ -51,11 +51,18 @@ export const Signup = ({ route, navigation }) => {
   const handleSubmit = useCallback(async () => {
     console.log('Signup');
     // console.log(name, email, password);
-    const response = await UserModel.create({name, email, password});
+    const response = await UserModel.create({ name, email, password });
     console.log(response);
-    setUser({userId: response.id, name});
+    setUser({ userId: response.id, name });
     // set async storage
-    // navigate
+    try {
+      await AsyncStorage.setItem('user', response.id);
+      console.log('Success');
+      // navigate
+      navigation.navigate('Map');
+    } catch {
+      console.error('Error setting user to async storage');
+    }
   }, [name, email, password]);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

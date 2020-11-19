@@ -4,7 +4,7 @@ import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
 import {
   PrimaryButton,
   SecondaryButton,
@@ -13,7 +13,7 @@ import {
   PasswordInput,
 } from '../components';
 import UserModel from '../models';
-import {UserContext} from '../hooks';
+import { UserContext } from '../hooks';
 // import Svg, { Path } from 'react-native-svg';
 
 const Container = styled.View`
@@ -40,22 +40,28 @@ const Inputs = styled.View`
 // );
 export const Login = ({ route, navigation }) => {
   const [user, setUser] = useContext(UserContext);
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = useCallback(async() => {
+  const handleSubmit = useCallback(async () => {
     console.log('Login');
-    const data = await UserModel.login({email, password});
+    const data = await UserModel.login({ email, password });
     console.log(data);
     if (!data.user) {
-      console.log("ERROR, something went wrong")
+      console.log('ERROR, something went wrong');
       return false;
     }
     // store user
-    setUser({userId: data.id, name: data.name});
+    setUser({ userId: data.id, name: data.name });
     // set asyncStorage
-
+    try {
+      await AsyncStorage.setItem('user', data.id);
+      console.log('Success');
+      navigation.navigate('Map');
+    } catch {
+      console.error('Error settng Async Storage');
+    }
   }, [email, password]);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
