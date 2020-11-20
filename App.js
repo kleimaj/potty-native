@@ -35,6 +35,8 @@ function MapScreen() {
 }
 
 function ProfileScreen() {
+  // const [currentUser, setUser] = useContext(UserContext);
+  // console.log('Profile', currentUser);
   return (
     // <Container>
     <OnboardingStack.Navigator>
@@ -61,20 +63,20 @@ function ProfileScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [currentUser, setUser] = useContext(UserContext);
+  // const [currentUser, setUser] = useContext(UserContext);
 
   // To be moved to onboarding screens
-  const storeUser = (userId, name) => {
-    setUser({ currentUser: userId, name });
-    // set async storage
-  };
+  // const storeUser = (userId, name) => {
+  //   setUser({ currentUser: userId, name });
+  //   // set async storage
+  // };
   // To be moved to onboarding screens
-  const logout = async () => {
-    // remove from async storage
-    await UserModel.logout();
-    setUser(null);
-    // navigate to Map or Profile?
-  };
+  // const logout = async () => {
+  //   // remove from async storage
+  //   await UserModel.logout();
+  //   setUser(null);
+  //   // navigate to Map or Profile?
+  // };
   // console.log('APP USER', currentUser);
   return (
     <UserContextProvider>

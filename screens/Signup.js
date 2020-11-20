@@ -2,7 +2,8 @@ import React, { useState, useCallback, useContext } from 'react';
 import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 import { BackIcon } from '../assets';
-import { TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {
   PrimaryButton,

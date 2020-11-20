@@ -4,7 +4,8 @@ import styled, { css } from '@emotion/native';
 // import Back from './back.svgx';
 import { BackIcon } from '../assets';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   PrimaryButton,
   SecondaryButton,
@@ -12,7 +13,7 @@ import {
   EmailInput,
   PasswordInput,
 } from '../components';
-import UserModel from '../models';
+import UserModel from '../models/user';
 import { UserContext } from '../hooks';
 // import Svg, { Path } from 'react-native-svg';
 

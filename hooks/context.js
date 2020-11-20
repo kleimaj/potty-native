@@ -1,8 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import UserModel from '../models';
 
-const UserContext = createContext([], () => {});
+const UserContext = createContext();
 
 const UserContextProvider = (props) => {
   const [user, setUser] = useState({});
