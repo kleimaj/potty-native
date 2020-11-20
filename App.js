@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Login, Signup, Splash } from './screens';
+import { Login, Signup, Splash, Profile } from './screens';
 
 import styled from '@emotion/native';
 import UserModel from './models';
@@ -35,26 +35,38 @@ function MapScreen() {
 }
 
 function ProfileScreen() {
-  // const [currentUser, setUser] = useContext(UserContext);
-  // console.log('Profile', currentUser);
+  const [currentUser, setUser] = useContext(UserContext);
+  console.log('Profile', currentUser);
   return (
     // <Container>
     <OnboardingStack.Navigator>
-      <OnboardingStack.Screen
-        name="Splash"
-        component={Splash}
-        options={{ headerShown: false }}
-      />
-      <OnboardingStack.Screen
-        name="Signup"
-        component={Signup}
-        options={{ headerShown: false }}
-      />
-      <OnboardingStack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      />
+      {!currentUser.name ? (
+        <>
+          <OnboardingStack.Screen
+            name="Splash"
+            component={Splash}
+            options={{ headerShown: false }}
+          />
+          <OnboardingStack.Screen
+            name="Signup"
+            component={Signup}
+            options={{ headerShown: false }}
+          />
+          <OnboardingStack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+        </>
+      ) : (
+        <>
+          <OnboardingStack.Screen
+            name="Profile"
+            component={Profile}
+            options={{ headerShown: true }}
+          />
+        </>
+      )}
     </OnboardingStack.Navigator>
     // </Container>
   );
