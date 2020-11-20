@@ -29,7 +29,9 @@ function MapScreen() {
   console.log('Currently logged in:', currentUser);
   return (
     <Container>
-      <Title>{currentUser.name ? currentUser.name : 'Map!'}</Title>
+      <Title>
+        {currentUser && currentUser.name ? currentUser.name : 'Map!'}
+      </Title>
     </Container>
   );
 }
@@ -40,7 +42,7 @@ function ProfileScreen() {
   return (
     // <Container>
     <OnboardingStack.Navigator>
-      {!currentUser.name ? (
+      {!Object.keys(currentUser).length ? (
         <>
           <OnboardingStack.Screen
             name="Splash"

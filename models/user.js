@@ -33,7 +33,7 @@ export default class UserModel {
 
   static async logout() {
     const res = await fetch(`${REACT_APP_API_URL}/auth/logout`, {
-      method: 'DELETE',
+      method: 'GET',
       credentials: 'include',
     });
     return await res.json();

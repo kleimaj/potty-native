@@ -4,7 +4,7 @@ import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { PrimaryButton, DangerButton } from '../components';
-import UserModel from '../models';
+import UserModel from '../models/user';
 import { ProfileIcon } from '../assets';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -30,12 +30,14 @@ export const Profile = ({ route, navigation }) => {
 
   const handleLogout = async () => {
     await UserModel.logout();
-    setUser(null);
     // remove from async storage
     try {
       await AsyncStorage.removeItem('user');
       console.log('Success');
-      navigation.navigate('Splash');
+      setUser({});
+      console.log('Navigating...');
+      navigation.navigate('Profile', { screen: 'Splash' });
+
       // navigate to Map or Profile?
     } catch (error) {
       console.error(error);
@@ -53,7 +55,7 @@ export const Profile = ({ route, navigation }) => {
         {currentUser.name ? `Welcome, ${currentUser.name}!` : 'Loading...'}
       </Header>
       <ButtonGroup>
-        <PrimaryButton>Logout</PrimaryButton>
+        <PrimaryButton onPress={() => handleLogout()}>Logout</PrimaryButton>
         <DangerButton>Delete Account</DangerButton>
       </ButtonGroup>
     </Container>
