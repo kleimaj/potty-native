@@ -15,5 +15,5 @@ const newLocal = `<svg width="160" height="160" viewBox="0 0 160 160" fill="none
   `;
 export const ProfileIcon = () => {
   const icon = newLocal;
-  return <SvgXml xml={icon} width={'55%'} />;
+  return <SvgXml xml={icon} width={'35%'} />;
 };

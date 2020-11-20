@@ -84,10 +84,10 @@ export default function App() {
   // };
   // To be moved to onboarding screens
   // const logout = async () => {
-  //   // remove from async storage
-  //   await UserModel.logout();
-  //   setUser(null);
-  //   // navigate to Map or Profile?
+  // // remove from async storage
+  // await UserModel.logout();
+  // setUser(null);
+  // // navigate to Map or Profile?
   // };
   // console.log('APP USER', currentUser);
   return (

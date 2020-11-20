@@ -59,7 +59,7 @@ export const Login = ({ route, navigation }) => {
     try {
       await AsyncStorage.setItem('user', JSON.stringify(response));
       console.log('Success');
-      navigation.navigate('Map');
+      navigation.navigate('Profile');
     } catch (error) {
       console.error(error);
     }

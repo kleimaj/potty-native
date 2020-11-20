@@ -43,3 +43,21 @@ export const SecondaryButton = (props) => (
     </Body>
   </Button>
 );
+
+export const DangerButton = (props) => (
+  <Button
+    onPress={props.onPress}
+    style={css`
+      border: 1px solid black;
+      background-color: #f9d117;
+    `}
+  >
+    <Body
+      style={css`
+        color: black;
+      `}
+    >
+      {props.children}
+    </Body>
+  </Button>
+);
