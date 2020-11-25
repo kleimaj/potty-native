@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 // import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,6 +32,14 @@ function MapScreen() {
   console.log('Currently logged in:', currentUser);
 
   const getLocation = async () => {
+    try {
+      const userLocation = await Location.getCurrentPositionAsync();
+      setLocation(userLocation);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const queryLocation = async () => {
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
 
     if (status !== 'granted') {
@@ -56,9 +64,9 @@ function MapScreen() {
     setLocation(userLocation);
   };
 
-  // useEffect(() => {
-  //   getLocation();
-  // }, []);
+  useEffect(() => {
+    getLocation();
+  }, []);
   return (
     <Container>
       {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
@@ -67,7 +75,7 @@ function MapScreen() {
       ) : (
         <>
           <Title>Location must be enabled to find Potties!</Title>
-          <PrimaryButton onPress={() => getLocation()}>
+          <PrimaryButton onPress={() => queryLocation()}>
             Enable my location
           </PrimaryButton>
         </>
