@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login, Signup, Splash, Profile } from './screens';
 
 import styled from '@emotion/native';
-import UserModel from './models';
+// import UserModel from './models';
 import { UserContextProvider, UserContext } from './hooks';
 
 const Container = styled.View`
@@ -30,7 +30,8 @@ function MapScreen() {
   return (
     <Container>
       <Title>
-        {currentUser && currentUser.name ? currentUser.name : 'Map!'}
+        {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
+        Location must be enabled
       </Title>
     </Container>
   );
