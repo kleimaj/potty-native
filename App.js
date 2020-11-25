@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 // import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login, Signup, Splash, Profile } from './screens';
+import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
 
 import styled from '@emotion/native';
-// import UserModel from './models';
+import { PrimaryButton } from './components';
 import { UserContextProvider, UserContext } from './hooks';
 
 const Container = styled.View`
@@ -26,13 +28,50 @@ const OnboardingStack = createStackNavigator();
 
 function MapScreen() {
   const [currentUser, setUser] = useContext(UserContext);
+  const [location, setLocation] = useState(false);
   console.log('Currently logged in:', currentUser);
+
+  const getLocation = async () => {
+    const { status } = await Permissions.askAsync(Permissions.LOCATION);
+
+    if (status !== 'granted') {
+      console.log('PERMISSION NOT GRANTED!');
+    }
+    const userLocation = await Location.getCurrentPositionAsync();
+    console.log(userLocation);
+    /*
+    Object {
+    "coords": Object {
+      "accuracy": 10,
+      "altitude": 375.0130920410156,
+      "altitudeAccuracy": 12,
+      "heading": 170.15625,
+      "latitude": 69.2313234324,
+      "longitude": -100.3213908242,
+      "speed": 2.3499999046325684,
+    },
+    "timestamp": 1606344066879.889,
+    }
+  */
+    setLocation(userLocation);
+  };
+
+  // useEffect(() => {
+  //   getLocation();
+  // }, []);
   return (
     <Container>
-      <Title>
-        {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
-        Location must be enabled
-      </Title>
+      {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
+      {location ? (
+        <Title>Location available</Title>
+      ) : (
+        <>
+          <Title>Location must be enabled to find Potties!</Title>
+          <PrimaryButton onPress={() => getLocation()}>
+            Enable my location
+          </PrimaryButton>
+        </>
+      )}
     </Container>
   );
 }
