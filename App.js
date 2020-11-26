@@ -8,7 +8,7 @@ import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 
 import styled from '@emotion/native';
-import { PrimaryButton } from './components';
+import { PrimaryButton, Map } from './components';
 import { UserContextProvider, UserContext } from './hooks';
 
 const Container = styled.View`
@@ -68,19 +68,20 @@ function MapScreen() {
     getLocation();
   }, []);
   return (
-    <Container>
+    <>
       {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
       {location ? (
-        <Title>Location available</Title>
+        // <Title>Location available</Title>
+        <Map location={location} />
       ) : (
-        <>
+        <Container>
           <Title>Location must be enabled to find Potties!</Title>
           <PrimaryButton onPress={() => queryLocation()}>
             Enable my location
           </PrimaryButton>
-        </>
+        </Container>
       )}
-    </Container>
+    </>
   );
 }
 

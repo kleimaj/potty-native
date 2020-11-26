@@ -10,7 +10,7 @@ const UserContextProvider = (props) => {
   const getUserFromAsyncStorage = async () => {
     const val = await AsyncStorage.getItem('user');
     const userFromStorage = await JSON.parse(val);
-    setUser(userFromStorage);
+    setUser(userFromStorage || {});
   };
   useEffect(() => {
     getUserFromAsyncStorage();
