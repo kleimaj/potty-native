@@ -27,7 +27,7 @@ const Title = styled.Text`
 const OnboardingStack = createStackNavigator();
 
 function MapScreen() {
-  const [currentUser, setUser] = useContext(UserContext);
+  const [currentUser] = useContext(UserContext);
   const [location, setLocation] = useState(false);
   console.log('Currently logged in:', currentUser);
 
@@ -86,7 +86,7 @@ function MapScreen() {
 }
 
 function ProfileScreen() {
-  const [currentUser, setUser] = useContext(UserContext);
+  const [currentUser] = useContext(UserContext);
   console.log('Profile', currentUser);
   return (
     // <Container>

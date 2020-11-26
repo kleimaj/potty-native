@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { UserContext } from '../hooks';
 import { Header } from '../utils';
 import styled, { css } from '@emotion/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { PrimaryButton, DangerButton } from '../components';
 import UserModel from '../models/user';
 import { ProfileIcon } from '../assets';
