@@ -60,7 +60,7 @@ export const Map = ({ location }) => {
               longitude: parseFloat(marker.longitude),
             }}
             title={marker.name}
-            description={marker.address}
+            description={`Rating: ${marker.rating}`}
           />
         ))}
     </MapView>
