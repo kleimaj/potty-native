@@ -1,5 +1,6 @@
 import React from 'react';
 import MapView from 'react-native-maps';
+import { usePotties } from '../hooks';
 // import styled from '@emotion/native';
 
 // how to calculate delta values:
@@ -37,6 +38,8 @@ const mapStyles = {
 };
 
 export const Map = ({ location }) => {
+  const [potties] = usePotties();
+  console.log(potties);
   return (
     <MapView
       style={mapStyles}
