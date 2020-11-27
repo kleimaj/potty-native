@@ -1,5 +1,5 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { usePotties } from '../hooks';
 // import styled from '@emotion/native';
 
@@ -38,8 +38,9 @@ const mapStyles = {
 };
 
 export const Map = ({ location }) => {
-  const [potties] = usePotties();
+  const potties = usePotties();
   console.log(potties);
+  console.log(typeof potties);
   return (
     <MapView
       style={mapStyles}
@@ -49,6 +50,19 @@ export const Map = ({ location }) => {
         location.coords.longitude,
         location.coords.accuracy,
       )}
-    />
+    >
+      {potties &&
+        potties.map((marker, idx) => (
+          <Marker
+            key={idx}
+            coordinate={{
+              latitude: parseFloat(marker.latitude),
+              longitude: parseFloat(marker.longitude),
+            }}
+            title={marker.name}
+            description={marker.address}
+          />
+        ))}
+    </MapView>
   );
 };
