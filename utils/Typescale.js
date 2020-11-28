@@ -42,5 +42,11 @@ export const Small = styled(Font)`
   font-size: 20px;
   line-height: 28;
 
-  color: ${(props) => (props.link ? `#0000EE` : `#000`)};
+  // color: ${(props) => (props.link ? `#0000EE` : `#000`)};
+`;
+
+export const HyperLink = styled(Font)`
+  font-size: 18px;
+  line-height: 28;
+  color: #0000ee;
 `;

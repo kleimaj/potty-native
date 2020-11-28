@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { Subhead, Small } from '../utils';
+import { Subhead, HyperLink } from '../utils';
+import { Rating } from './Rating';
+import { StarIcon } from '../assets';
 
 const Window = styled.View`
   //   margin: 50px 20px;
@@ -35,16 +37,18 @@ const Arrow = styled.View`
   align-self: center;
   margin-top: -32;
 `;
-const Address = styled.TouchableOpacity``;
+const Address = styled.TouchableOpacity`
+  text-align: center;
+`;
 
 export const InfoWindow = ({ name, address, rating }) => (
   <Window>
     <Bubble>
       <Subhead>{name}</Subhead>
+      <Rating rating={rating} />
       <Address>
-        <Small link>{address}</Small>
+        <HyperLink>{address}</HyperLink>
       </Address>
-      <Small>{rating}</Small>
     </Bubble>
     <ArrowBorder />
     <Arrow />
