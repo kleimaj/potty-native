@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { Subhead, HyperLink } from '../utils';
+import { Subhead, HyperLinkText } from '../utils';
+
 import { Rating } from './Rating';
 
 const Window = styled.View`
   //   margin: 50px 20px;
-  position: relative;
+  //   position: relative;
   //   padding: 30px 10px;
 `;
 
@@ -36,20 +37,17 @@ const Arrow = styled.View`
   align-self: center;
   margin-top: -32;
 `;
-const Address = styled.TouchableOpacity`
-  text-align: center;
-`;
 
-export const InfoWindow = ({ name, address, rating }) => (
-  <Window>
-    <Bubble>
-      <Subhead>{name}</Subhead>
-      <Rating rating={rating} />
-      <Address>
-        <HyperLink>{address}</HyperLink>
-      </Address>
-    </Bubble>
-    <ArrowBorder />
-    <Arrow />
-  </Window>
-);
+export const InfoWindow = ({ name, address, rating }) => {
+  return (
+    <Window>
+      <Bubble>
+        <Subhead>{name}</Subhead>
+        <Rating rating={rating} />
+        <HyperLinkText>{address}</HyperLinkText>
+      </Bubble>
+      <ArrowBorder />
+      <Arrow />
+    </Window>
+  );
+};

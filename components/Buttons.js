@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from '@emotion/native';
-import { Body } from '../utils';
+import { Body, HyperLinkText } from '../utils';
 
 const Button = styled.TouchableOpacity`
   align-items: center;
@@ -8,6 +8,10 @@ const Button = styled.TouchableOpacity`
   border-radius: 12px;
   padding: 12px;
   margin: 8px 0;
+`;
+const Link = styled.TouchableOpacity`
+  background: black;
+  margin: 15px;
 `;
 
 export const PrimaryButton = (props) => (
@@ -60,4 +64,10 @@ export const DangerButton = (props) => (
       {props.children}
     </Body>
   </Button>
+);
+
+export const HyperLink = (props) => (
+  <Link onPress={props.onPress}>
+    <HyperLinkText>{props.childrem}</HyperLinkText>
+  </Link>
 );

@@ -2,6 +2,7 @@ import React from 'react';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
+import { useNavigation } from '@react-navigation/native';
 
 // import styled from '@emotion/native';
 
@@ -40,6 +41,8 @@ const mapStyles = {
 };
 
 export const Map = ({ location }) => {
+  const navigation = useNavigation();
+
   const potties = usePotties();
   console.log(potties);
   console.log(typeof potties);
@@ -63,6 +66,7 @@ export const Map = ({ location }) => {
             }}
             // title={marker.name}
             // description={`Rating: ${marker.rating}`}
+            onCalloutPress={() => navigation.navigate('Potty')}
           >
             <Callout tooltip>
               <InfoWindow

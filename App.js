@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Login, Signup, Splash, Profile, MapView } from './screens';
+import { Login, Signup, Splash, Profile, MapView, Potty } from './screens';
 import { UserContextProvider, UserContext } from './hooks';
 
 const OnboardingStack = createStackNavigator();
@@ -15,6 +15,11 @@ function MapScreen() {
       <MapStack.Screen
         name="Map"
         component={MapView}
+        options={{ headerShown: false }}
+      />
+      <MapStack.Screen
+        name="Potty"
+        component={Potty}
         options={{ headerShown: false }}
       />
     </MapStack.Navigator>
