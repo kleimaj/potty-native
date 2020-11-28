@@ -1,5 +1,7 @@
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import { Header } from '../utils';
+import { PrimaryButton } from './Buttons';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
 // import styled from '@emotion/native';
 
@@ -59,9 +61,13 @@ export const Map = ({ location }) => {
               latitude: parseFloat(marker.latitude),
               longitude: parseFloat(marker.longitude),
             }}
-            title={marker.name}
-            description={`Rating: ${marker.rating}`}
-          />
+            // title={marker.name}
+            // description={`Rating: ${marker.rating}`}
+          >
+            <Callout tooltip>
+              <Header>Hello World</Header>
+            </Callout>
+          </Marker>
         ))}
     </MapView>
   );
