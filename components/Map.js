@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from '../utils';
 import { PrimaryButton } from './Buttons';
+import { InfoWindow } from './InfoWindow';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
 // import styled from '@emotion/native';
@@ -65,7 +66,11 @@ export const Map = ({ location }) => {
             // description={`Rating: ${marker.rating}`}
           >
             <Callout tooltip>
-              <Header>Hello World</Header>
+              <InfoWindow
+                name={marker.name}
+                address={marker.address}
+                rating={marker.rating}
+              />
             </Callout>
           </Marker>
         ))}
