@@ -3,9 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Login, Signup, Splash, Profile } from './screens';
-import * as Permissions from 'expo-permissions';
-import * as Location from 'expo-location';
+import { Login, Signup, Splash, Profile, MapView } from './screens';
 
 import styled from '@emotion/native';
 import { PrimaryButton, Map } from './components';
@@ -25,63 +23,17 @@ const Title = styled.Text`
 `;
 
 const OnboardingStack = createStackNavigator();
+const MapStack = createStackNavigator();
 
 function MapScreen() {
-  const [currentUser] = useContext(UserContext);
-  const [location, setLocation] = useState(false);
-  console.log('Currently logged in:', currentUser);
-
-  const getLocation = async () => {
-    try {
-      const userLocation = await Location.getCurrentPositionAsync();
-      setLocation(userLocation);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const queryLocation = async () => {
-    const { status } = await Permissions.askAsync(Permissions.LOCATION);
-
-    if (status !== 'granted') {
-      console.log('PERMISSION NOT GRANTED!');
-    }
-    const userLocation = await Location.getCurrentPositionAsync();
-    console.log(userLocation);
-    /*
-    Object {
-    "coords": Object {
-      "accuracy": 10,
-      "altitude": 375.0130920410156,
-      "altitudeAccuracy": 12,
-      "heading": 170.15625,
-      "latitude": 69.2313234324,
-      "longitude": -100.3213908242,
-      "speed": 2.3499999046325684,
-    },
-    "timestamp": 1606344066879.889,
-    }
-  */
-    setLocation(userLocation);
-  };
-
-  useEffect(() => {
-    getLocation();
-  }, []);
   return (
-    <>
-      {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
-      {location ? (
-        // <Title>Location available</Title>
-        <Map location={location} />
-      ) : (
-        <Container>
-          <Title>Location must be enabled to find Potties!</Title>
-          <PrimaryButton onPress={() => queryLocation()}>
-            Enable my location
-          </PrimaryButton>
-        </Container>
-      )}
-    </>
+    <MapStack.Navigator>
+      <MapStack.Screen
+        name="Map"
+        component={MapView}
+        options={{ headerShown: false }}
+      />
+    </MapStack.Navigator>
   );
 }
 
