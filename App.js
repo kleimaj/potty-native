@@ -1,26 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 // import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Login, Signup, Splash, Profile, MapView } from './screens';
-
-import styled from '@emotion/native';
-import { PrimaryButton, Map } from './components';
 import { UserContextProvider, UserContext } from './hooks';
-
-const Container = styled.View`
-  flex: 1;
-  background-color: papayawhip;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Title = styled.Text`
-  font-size: 20px;
-  font-weight: 500;
-  color: palevioletred;
-`;
 
 const OnboardingStack = createStackNavigator();
 const MapStack = createStackNavigator();
