@@ -1,9 +1,8 @@
 import React from 'react';
-import { Header } from '../utils';
-import { PrimaryButton } from './Buttons';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
+
 // import styled from '@emotion/native';
 
 // how to calculate delta values:

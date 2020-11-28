@@ -42,7 +42,7 @@ const Inputs = styled.View`
 // );
 
 export const Signup = ({ route, navigation }) => {
-  const [user, setUser] = useContext(UserContext);
+  const [, setUser] = useContext(UserContext);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

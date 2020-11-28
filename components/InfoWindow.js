@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/native';
 import { Subhead, HyperLink } from '../utils';
 import { Rating } from './Rating';
-import { StarIcon } from '../assets';
 
 const Window = styled.View`
   //   margin: 50px 20px;
