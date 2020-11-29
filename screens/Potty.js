@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Header, Container } from '../utils';
+import { useComments } from '../hooks';
 
 export const Potty = ({ route, navigation }) => {
   /*"address": "225 Bush Street, San Francisco, CA 94104",
@@ -13,7 +14,8 @@ export const Potty = ({ route, navigation }) => {
     "updatedAt": "2020-11-27T23:37:07.542Z",
     "zip": "91355",*/
   const [potty] = useState(route.params);
-  //   console.log(route.params);
+  const [comments] = useComments(potty.id);
+  console.log(comments);
 
   return potty ? (
     <Container>
