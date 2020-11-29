@@ -15,14 +15,17 @@ const Card = styled.View`
 `;
 
 export const Comment = (props) => {
-  console.log(props.comment.item, '!');
   const { title, rating, body, author } = props.comment.item;
-  console.log(title, rating, body);
-  console.log('~~~~~~~~');
   return (
     <Container>
       <Card>
-        <Small>{title}</Small>
+        <Small
+          style={css`
+            font-weight: bold;
+          `}
+        >
+          {title}
+        </Small>
         <Rating rating={parseInt(rating, 10)} />
         <Smallest>{body}</Smallest>
       </Card>

@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { Container, Header, Subhead, Body } from '../utils';
 import { useComments } from '../hooks';
 import { Rating, Comment } from '../components';
+import styled, { css } from '@emotion/native';
 import { FlatList } from 'react-native-gesture-handler';
+
+const CommentContainer = styled.View`
+  height: 300px;
+`;
 
 export const Potty = ({ route, navigation }) => {
   /*"address": "225 Bush Street, San Francisco, CA 94104",
@@ -17,21 +22,29 @@ export const Potty = ({ route, navigation }) => {
     "zip": "91355",*/
   const [potty] = useState(route.params);
   const comments = useComments(potty.id);
-  console.log(comments, 'the comments~');
-  console.log(typeof comments);
 
   return potty ? (
     <Container>
       <Header>{potty.name}</Header>
-      <Body>{potty.address}</Body>
       <Rating rating={parseInt(potty.rating, 10)} />
+
+      <Body
+        style={css`
+          padding: 14px;
+        `}
+      >
+        {potty.address}
+      </Body>
       <Subhead>Comments</Subhead>
-      {/* <Comment /> */}
-      <FlatList
-        data={comments}
-        renderItem={(comment) => <Comment comment={comment} />}
-        keyExtractor={(comment) => comment.id}
-      />
+      <CommentContainer>
+        <FlatList
+          data={comments}
+          style={css``}
+          renderItem={(comment) => <Comment comment={comment} />}
+          keyExtractor={(comment) => comment.id}
+          ListEmptyComponent={<Body>No comments yet!</Body>}
+        />
+      </CommentContainer>
     </Container>
   ) : (
     <Container>

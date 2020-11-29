@@ -11,7 +11,6 @@ const Button = styled.TouchableOpacity`
 `;
 const Link = styled.TouchableOpacity`
   background: black;
-  margin: 15px;
 `;
 
 export const PrimaryButton = (props) => (

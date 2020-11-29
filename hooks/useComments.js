@@ -15,7 +15,6 @@ export const useComments = (id) => {
     async function getComments(pottyId) {
       const res = await fetch(`${REACT_APP_API_URL}/comment/${pottyId}`);
       const returnedComments = await res.json();
-      console.log(returnedComments, 'the returned comments');
       setComments(returnedComments);
     }
     getComments(id);
