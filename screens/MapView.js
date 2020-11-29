@@ -4,13 +4,7 @@ import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import { PrimaryButton, Map } from '../components';
 import styled from '@emotion/native';
-
-const Container = styled.View`
-  flex: 1;
-  background-color: papayawhip;
-  justify-content: center;
-  align-items: center;
-`;
+import { Container } from '../utils';
 
 const Title = styled.Text`
   font-size: 20px;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Header } from '../utils';
+import { Header, Container } from '../utils';
 
 export const Potty = ({ route, navigation }) => {
   /*"address": "225 Bush Street, San Francisco, CA 94104",
@@ -15,5 +15,13 @@ export const Potty = ({ route, navigation }) => {
   const [potty] = useState(route.params);
   //   console.log(route.params);
 
-  return potty ? <Header>{potty.name}</Header> : <Header>Loading</Header>;
+  return potty ? (
+    <Container>
+      <Header>{potty.name}</Header>
+    </Container>
+  ) : (
+    <Container>
+      <Header>Loading</Header>
+    </Container>
+  );
 };

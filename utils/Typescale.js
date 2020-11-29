@@ -1,5 +1,12 @@
 import styled from '@emotion/native';
 
+export const Container = styled.View`
+  flex: 1;
+  background-color: papayawhip;
+  justify-content: center;
+  align-items: center;
+`;
+
 // Type Scale Resources
 // https://www.pinterest.com/pin/326299935487905443/
 
