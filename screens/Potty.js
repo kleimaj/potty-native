@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Header, Subhead, Body } from '../utils';
 import { useComments } from '../hooks';
-import { Rating } from '../components/Rating';
+import { Rating, Comment } from '../components';
 import { FlatList } from 'react-native-gesture-handler';
 
 export const Potty = ({ route, navigation }) => {
@@ -17,7 +17,7 @@ export const Potty = ({ route, navigation }) => {
     "zip": "91355",*/
   const [potty] = useState(route.params);
   const [comments] = useComments(potty.id);
-  console.log(comments);
+  console.log(comments, 'the comments');
 
   return potty ? (
     <Container>
@@ -25,9 +25,9 @@ export const Potty = ({ route, navigation }) => {
       <Body>{potty.address}</Body>
       <Rating rating={parseInt(potty.rating, 10)} />
       <Subhead>Comments</Subhead>
-      {/* <FlatList
-
-      /> */}
+      <Comment />
+      {/* <FlatList */}
+      // />
     </Container>
   ) : (
     <Container>
