@@ -16,8 +16,9 @@ export const Potty = ({ route, navigation }) => {
     "updatedAt": "2020-11-27T23:37:07.542Z",
     "zip": "91355",*/
   const [potty] = useState(route.params);
-  const [comments] = useComments(potty.id);
-  console.log(comments, 'the comments');
+  const comments = useComments(potty.id);
+  console.log(comments, 'the comments~');
+  console.log(typeof comments);
 
   return potty ? (
     <Container>
@@ -25,9 +26,12 @@ export const Potty = ({ route, navigation }) => {
       <Body>{potty.address}</Body>
       <Rating rating={parseInt(potty.rating, 10)} />
       <Subhead>Comments</Subhead>
-      <Comment />
-      {/* <FlatList */}
-      // />
+      {/* <Comment /> */}
+      <FlatList
+        data={comments}
+        renderItem={(comment) => <Comment comment={comment} />}
+        keyExtractor={(comment) => comment.id}
+      />
     </Container>
   ) : (
     <Container>

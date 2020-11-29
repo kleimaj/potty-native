@@ -49,8 +49,10 @@ export const Small = styled(Font)`
   font-size: 20px;
   line-height: 28;
 `;
-export const HyperLinkText = styled(Font)`
+export const Smallest = styled(Font)`
   font-size: 18px;
   line-height: 28;
+`;
+export const HyperLinkText = styled(Smallest)`
   color: #0000ee;
 `;

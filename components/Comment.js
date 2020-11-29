@@ -1,23 +1,25 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { Rating } from './Rating';
-import { Small } from '../utils';
+import { Small, Smallest } from '../utils';
 
 const Card = styled.View`
   border-radius: 16px;
   background: white;
   padding: 25px;
-  width: 300px;
-  height: 200px;
+  margin: 18px;
 `;
 
-export const Comment = ({ comment }) => {
-  console.log(comment);
+export const Comment = (props) => {
+  console.log(props.comment.item, '!');
+  const { title, rating, body } = props.comment.item;
+  console.log(title, rating, body);
+  console.log('~~~~~~~~');
   return (
     <Card>
-      <Small>{comment.title}</Small>
-      <Rating rating={comment.rating} />
-      <Small>{comment.body}</Small>
+      <Small>{title}</Small>
+      <Rating rating={parseInt(rating, 10)} />
+      <Smallest>{body}</Smallest>
     </Card>
   );
 };
