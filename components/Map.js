@@ -66,7 +66,7 @@ export const Map = ({ location }) => {
             }}
             // title={marker.name}
             // description={`Rating: ${marker.rating}`}
-            onCalloutPress={() => navigation.navigate('Potty')}
+            onCalloutPress={() => navigation.navigate('Potty', marker)}
           >
             <Callout tooltip>
               <InfoWindow
