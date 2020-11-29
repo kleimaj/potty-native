@@ -8,6 +8,7 @@ const REACT_APP_API_URL = `http://${manifest.debuggerHost
   .split(':')
   .shift()}:3000`;
 
+//   id: number
 export const useComments = (id) => {
   const [comments, setComments] = useState([]);
   useEffect(() => {

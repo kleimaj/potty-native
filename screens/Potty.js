@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Header, Container } from '../utils';
+import { Container, Header, Subhead, Body } from '../utils';
 import { useComments } from '../hooks';
+import { Rating } from '../components/Rating';
+import { FlatList } from 'react-native-gesture-handler';
 
 export const Potty = ({ route, navigation }) => {
   /*"address": "225 Bush Street, San Francisco, CA 94104",
@@ -20,6 +22,12 @@ export const Potty = ({ route, navigation }) => {
   return potty ? (
     <Container>
       <Header>{potty.name}</Header>
+      <Body>{potty.address}</Body>
+      <Rating rating={parseInt(potty.rating, 10)} />
+      <Subhead>Comments</Subhead>
+      {/* <FlatList
+
+      /> */}
     </Container>
   ) : (
     <Container>
