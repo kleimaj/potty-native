@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import Constants from 'expo-constants';
 
 const { manifest } = Constants;
@@ -14,6 +15,10 @@ export const useComments = (id) => {
   const addComment = async (data) => {
     if (!data.body || !data.title) {
       // Alert
+      Alert.alert(
+        'Cannot Add Comment',
+        'Please include Title and Body content.',
+      );
     }
     try {
       const res = await fetch(`${REACT_APP_API_URL}/comment`, {
