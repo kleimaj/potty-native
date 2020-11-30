@@ -11,8 +11,22 @@ const REACT_APP_API_URL = `http://${manifest.debuggerHost
 //   id: number
 export const useComments = (id) => {
   const [comments, setComments] = useState([]);
-  const addComment = () => {
-    console.log('adding comment!');
+  const addComment = async (data) => {
+    if (!data.body || !data.title) {
+      // Alert
+    }
+    try {
+      const res = await fetch(`${REACT_APP_API_URL}/comment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const newComment = await res.json();
+      setComments((currComments) => [...currComments, newComment]);
+    } catch (error) {
+      console.log('something happened');
+      console.error(error);
+    }
   };
   useEffect(() => {
     async function getComments(pottyId) {

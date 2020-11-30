@@ -77,7 +77,19 @@ export const Potty = ({ route, navigation }) => {
             />
             <Smallest>Body</Smallest>
             <Input onChangeText={setBody} value={body} />
-            <PrimaryButton onPress={() => addComment()}>Post</PrimaryButton>
+            <PrimaryButton
+              onPress={() =>
+                addComment({
+                  title: 'New Comment',
+                  author: 'Jacob',
+                  pottyId: potty.id,
+                  rating: 4,
+                  body: 'fuck me',
+                })
+              }
+            >
+              Post
+            </PrimaryButton>
           </Inputs>
         </Scroll>
       </Main>
