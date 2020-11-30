@@ -13,27 +13,27 @@ import { useNavigation } from '@react-navigation/native';
 
 // getRegionForCoordinates
 // https://github.com/react-native-maps/react-native-maps/issues/505#issuecomment-243423775
-function regionFrom(lat, lon, distance) {
-  distance = distance / 2;
-  const circumference = 40075;
-  const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
-  const angularDistance = distance / circumference;
+// function regionFrom(lat, lon, distance) {
+//   distance = distance / 2;
+//   const circumference = 40075;
+//   const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
+//   const angularDistance = distance / circumference;
 
-  const latitudeDelta = distance / oneDegreeOfLatitudeInMeters;
-  const longitudeDelta = Math.abs(
-    Math.atan2(
-      Math.sin(angularDistance) * Math.cos(lat),
-      Math.cos(angularDistance) - Math.sin(lat) * Math.sin(lat),
-    ),
-  );
+//   const latitudeDelta = distance / oneDegreeOfLatitudeInMeters;
+//   const longitudeDelta = Math.abs(
+//     Math.atan2(
+//       Math.sin(angularDistance) * Math.cos(lat),
+//       Math.cos(angularDistance) - Math.sin(lat) * Math.sin(lat),
+//     ),
+//   );
 
-  return {
-    latitude: lat,
-    longitude: lon,
-    latitudeDelta,
-    longitudeDelta,
-  };
-}
+//   return {
+//     latitude: lat,
+//     longitude: lon,
+//     latitudeDelta,
+//     longitudeDelta,
+//   };
+// }
 
 const mapStyles = {
   flex: 2,
@@ -50,11 +50,12 @@ export const Map = ({ location }) => {
     <MapView
       style={mapStyles}
       showsUserLocation
-      initialRegion={regionFrom(
-        location.coords.latitude,
-        location.coords.longitude,
-        location.coords.accuracy,
-      )}
+      initialRegion={{
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.015 * 5,
+        longitudeDelta: 0.0121 * 5,
+      }}
     >
       {potties &&
         potties.map((marker, idx) => (

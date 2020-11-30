@@ -96,6 +96,7 @@ export const Potty = ({ route, navigation }) => {
           </Scroll>
         </Main>
       ) : (
+        //   Navigate to Profile?
         <Small>Login to add comments!</Small>
       )}
     </Container>
