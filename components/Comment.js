@@ -23,6 +23,7 @@ export const Comment = (props) => {
         <Small
           style={css`
             font-weight: bold;
+            align-self: flex-start;
           `}
         >
           {title}
