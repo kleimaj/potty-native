@@ -9,10 +9,11 @@ export const StarBlankIcon = () => {
     <SvgXml
       style={css`
         color: black;
+        // margin: 0 24px;
       `}
       xml={icon}
-      width="20%"
-      height="20%"
+      width="40%"
+      height="40%"
     />
   );
 };

@@ -12,6 +12,7 @@ const Card = styled.View`
   border-radius: 16px;
   background: white;
   padding: 18px;
+  align-items: center;
 `;
 
 export const Comment = (props) => {
