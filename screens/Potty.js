@@ -46,10 +46,9 @@ export const Potty = ({ route, navigation }) => {
           ListEmptyComponent={<Body>No comments yet!</Body>}
         />
       </CommentContainer>
-      <Small>Add a comment</Small>
+      <Subhead>Add a comment</Subhead>
       <Smallest>Title</Smallest>
       <Input onChangeText={setTitle} value={title} />
-      />
       <Smallest>Body</Smallest>
       <Input onChangeText={setBody} value={body} />
     </Container>

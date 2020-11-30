@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { StarIcon } from '../assets';
+import { StarIcon, StarBlankIcon } from '../assets';
 
 const RatingContainer = styled.View`
   flex-direction: row;
@@ -17,6 +17,11 @@ export const Rating = ({ rating }) => (
       .fill(1)
       .map((star, idx) => (
         <StarIcon key={idx} />
+      ))}
+    {Array(5 - parseInt(rating, 10))
+      .fill(1)
+      .map((star, idx) => (
+        <StarBlankIcon key={idx} />
       ))}
   </RatingContainer>
 );
