@@ -6,48 +6,18 @@ import { useNavigation } from '@react-navigation/native';
 import { TargetButton } from './Buttons';
 // import styled from '@emotion/native';
 
-// how to calculate delta values:
-// https://stackoverflow.com/questions/50882700/react-native-mapview-what-is-latitudedelta-longitudedelta
-// const { width, height } = Dimensions.get('window');
-// const ASPECT_RATIO = width / height;
-
-// getRegionForCoordinates
-// https://github.com/react-native-maps/react-native-maps/issues/505#issuecomment-243423775
-// function regionFrom(lat, lon, distance) {
-//   distance = distance / 2;
-//   const circumference = 40075;
-//   const oneDegreeOfLatitudeInMeters = 111.32 * 1000;
-//   const angularDistance = distance / circumference;
-
-//   const latitudeDelta = distance / oneDegreeOfLatitudeInMeters;
-//   const longitudeDelta = Math.abs(
-//     Math.atan2(
-//       Math.sin(angularDistance) * Math.cos(lat),
-//       Math.cos(angularDistance) - Math.sin(lat) * Math.sin(lat),
-//     ),
-//   );
-
-//   return {
-//     latitude: lat,
-//     longitude: lon,
-//     latitudeDelta,
-//     longitudeDelta,
-//   };
-// }
-
 const mapStyles = {
   flex: 2,
   padding: 10,
 };
-const loadingMap = {
-  display: 'none',
-};
-
 export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
 
   const [currRegion, setRegion] = useState();
-  const potties = usePotties();
+  const potties = usePotties(
+    location.coords.latitude,
+    location.coords.longitude,
+  );
   console.log(potties);
   console.log(typeof potties);
 
