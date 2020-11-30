@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { css } from '@emotion/native';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
@@ -51,7 +50,8 @@ export const Map = ({ location }) => {
   console.log(typeof potties);
 
   const recenter = () => {
-    map.animateToRegion({
+    console.log(map);
+    map.current.animateToRegion({
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
       latitudeDelta: 0.015 * 5,
@@ -94,12 +94,7 @@ export const Map = ({ location }) => {
             </Marker>
           ))}
       </MapView>
-      <TargetButton
-        style={css`
-          position: absolute;
-        `}
-        onPress={recenter}
-      />
+      <TargetButton onPress={recenter} />
     </>
   );
 };
