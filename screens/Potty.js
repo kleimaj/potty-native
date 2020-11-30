@@ -66,34 +66,38 @@ export const Potty = ({ route, navigation }) => {
           ListEmptyComponent={<Body>No comments yet!</Body>}
         />
       </CommentContainer>
-      <Main>
-        <Scroll>
-          <Small>Add a comment</Small>
-          <Inputs>
-            <Smallest>Title</Smallest>
-            <Input onChangeText={setTitle} value={title} />
-            <EditableRating
-              currRating={currRating}
-              setCurrRating={setCurrRating}
-            />
-            <Smallest>Body</Smallest>
-            <Input onChangeText={setBody} value={body} />
-            <PrimaryButton
-              onPress={() =>
-                addComment({
-                  title,
-                  body,
-                  pottyId: potty.id,
-                  rating: currRating,
-                  author: currentUser.name,
-                })
-              }
-            >
-              Post
-            </PrimaryButton>
-          </Inputs>
-        </Scroll>
-      </Main>
+      {Object.keys(currentUser).length ? (
+        <Main>
+          <Scroll>
+            <Small>Add a comment</Small>
+            <Inputs>
+              <Smallest>Title</Smallest>
+              <Input onChangeText={setTitle} value={title} />
+              <EditableRating
+                currRating={currRating}
+                setCurrRating={setCurrRating}
+              />
+              <Smallest>Body</Smallest>
+              <Input onChangeText={setBody} value={body} />
+              <PrimaryButton
+                onPress={() =>
+                  addComment({
+                    title,
+                    body,
+                    pottyId: potty.id,
+                    rating: currRating,
+                    author: currentUser.name,
+                  })
+                }
+              >
+                Post
+              </PrimaryButton>
+            </Inputs>
+          </Scroll>
+        </Main>
+      ) : (
+        <Small>Login to add comments!</Small>
+      )}
     </Container>
   ) : (
     <Container>
