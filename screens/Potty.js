@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Header, Subhead, Body, Small, Smallest } from '../utils';
 import { useComments } from '../hooks';
-import { Rating, Comment, Input } from '../components';
+import { Rating, EditableRating, Comment, Input } from '../components';
 import styled, { css } from '@emotion/native';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -51,6 +51,7 @@ export const Potty = ({ route, navigation }) => {
       <Input onChangeText={setTitle} value={title} />
       <Smallest>Body</Smallest>
       <Input onChangeText={setBody} value={body} /> */}
+      <EditableRating />
     </Container>
   ) : (
     <Container>
