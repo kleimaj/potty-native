@@ -11,6 +11,9 @@ const REACT_APP_API_URL = `http://${manifest.debuggerHost
 //   id: number
 export const useComments = (id) => {
   const [comments, setComments] = useState([]);
+  const addComment = () => {
+    console.log('adding comment!');
+  };
   useEffect(() => {
     async function getComments(pottyId) {
       const res = await fetch(`${REACT_APP_API_URL}/comment/${pottyId}`);
@@ -20,5 +23,5 @@ export const useComments = (id) => {
     getComments(id);
   }, [id]);
 
-  return comments;
+  return { comments, addComment };
 };
