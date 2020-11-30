@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
@@ -42,14 +42,27 @@ const mapStyles = {
 
 export const Map = ({ location }) => {
   const navigation = useNavigation();
+  const map = useRef();
 
+  const [currRegion, setRegion] = useState();
   const potties = usePotties();
   console.log(potties);
   console.log(typeof potties);
+
+  const recenter = () => {
+    map.animateToRegion({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      latitudeDelta: 0.015 * 5,
+      longitudeDelta: 0.0121 * 5,
+    });
+  };
   return (
     <MapView
       style={mapStyles}
+      ref={map}
       showsUserLocation
+      onRegionChangeComplete={(region) => setRegion(region)}
       initialRegion={{
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
