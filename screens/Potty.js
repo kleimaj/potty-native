@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Container, Header, Subhead, Body, Small, Smallest } from '../utils';
-import { useComments } from '../hooks';
+import { useComments, UserContext } from '../hooks';
 import {
   Rating,
   PrimaryButton,
@@ -37,6 +37,7 @@ export const Potty = ({ route, navigation }) => {
     "zip": "91355",*/
   const [potty] = useState(route.params);
   const { comments, addComment } = useComments(potty.id);
+  const [currentUser] = useContext(UserContext);
 
   const [title, setTitle] = useState('');
   const [currRating, setCurrRating] = useState(0);
@@ -80,11 +81,11 @@ export const Potty = ({ route, navigation }) => {
             <PrimaryButton
               onPress={() =>
                 addComment({
-                  title: 'New Comment',
-                  author: 'Jacob',
+                  title,
+                  body,
                   pottyId: potty.id,
-                  rating: 4,
-                  body: 'fuck me',
+                  rating: currRating,
+                  author: currentUser.name,
                 })
               }
             >

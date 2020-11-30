@@ -39,14 +39,24 @@ export const EditableRating = ({ currRating, setCurrRating }) => {
       {Array(currRating)
         .fill(1)
         .map((star, idx) => (
-          <Touch onPress={() => setCurrRating(idx + 1)}>
+          <Touch
+            onPress={() => {
+              console.log(idx + 1);
+              setCurrRating(idx + 1);
+            }}
+          >
             <StarIcon key={idx} />
           </Touch>
         ))}
       {Array(5 - currRating)
         .fill(1)
         .map((star, idx) => (
-          <Touch onPress={() => setCurrRating(currRating + (idx + 1))}>
+          <Touch
+            onPress={() => {
+              console.log(currRating + idx + 1);
+              setCurrRating(currRating + (idx + 1));
+            }}
+          >
             <StarBlankIcon key={idx} />
           </Touch>
         ))}
