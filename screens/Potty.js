@@ -24,6 +24,7 @@ export const Potty = ({ route, navigation }) => {
   const comments = useComments(potty.id);
 
   const [title, setTitle] = useState('');
+  const [currRating, setCurrRating] = useState(0);
   const [body, setBody] = useState('');
   return potty ? (
     <Container>
@@ -51,7 +52,7 @@ export const Potty = ({ route, navigation }) => {
       <Input onChangeText={setTitle} value={title} />
       <Smallest>Body</Smallest>
       <Input onChangeText={setBody} value={body} /> */}
-      <EditableRating />
+      <EditableRating currRating={currRating} setCurrRating={setCurrRating} />
     </Container>
   ) : (
     <Container>

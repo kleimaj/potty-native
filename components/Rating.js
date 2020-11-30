@@ -33,8 +33,7 @@ export const Rating = ({ rating }) => (
   </RatingContainer>
 );
 
-export const EditableRating = () => {
-  const [currRating, setCurrRating] = useState(0);
+export const EditableRating = ({ currRating, setCurrRating }) => {
   return (
     <RatingContainer>
       {Array(currRating)
