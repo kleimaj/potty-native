@@ -4,4 +4,5 @@ export * from './Name';
 export * from './Password';
 export * from './SecureIcon';
 export * from './ProfileIcon';
+export * from './TargetIcon';
 export * from './rating';

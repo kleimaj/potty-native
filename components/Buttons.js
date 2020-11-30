@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from '@emotion/native';
 import { Body, HyperLinkText } from '../utils';
+import { TargetIcon } from '../assets';
 
 const Button = styled.TouchableOpacity`
   align-items: center;
@@ -12,7 +13,15 @@ const Button = styled.TouchableOpacity`
 const Link = styled.TouchableOpacity`
   background: black;
 `;
-
+const IconButton = styled.TouchableOpacity`
+  padding: 12px;
+  position: absolute;
+  right: 0;
+  top: 70%;
+  // align-items: center;
+  // border-radius: 50%;
+  // margin: 8px 0;
+`;
 export const PrimaryButton = (props) => (
   <Button
     onPress={props.onPress}
@@ -69,4 +78,10 @@ export const HyperLink = (props) => (
   <Link onPress={props.onPress}>
     <HyperLinkText>{props.childrem}</HyperLinkText>
   </Link>
+);
+
+export const TargetButton = (props) => (
+  <IconButton onPress={props.onPress}>
+    <TargetIcon />
+  </IconButton>
 );
