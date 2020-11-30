@@ -39,10 +39,12 @@ const mapStyles = {
   flex: 2,
   padding: 10,
 };
+const loadingMap = {
+  display: 'none',
+};
 
-export const Map = ({ location }) => {
+export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
-  const map = useRef();
 
   const [currRegion, setRegion] = useState();
   const potties = usePotties();
@@ -64,6 +66,7 @@ export const Map = ({ location }) => {
         style={mapStyles}
         ref={map}
         showsUserLocation
+        onMapReady={() => setReady(true)}
         onRegionChangeComplete={(region) => setRegion(region)}
         initialRegion={{
           latitude: location.coords.latitude,

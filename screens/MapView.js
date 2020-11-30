@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { UserContext } from '../hooks';
 import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import { PrimaryButton, Map } from '../components';
 import styled from '@emotion/native';
 import { Container } from '../utils';
+import { ActivityIndicator } from 'react-native';
 
 const Title = styled.Text`
   font-size: 20px;
@@ -14,6 +15,9 @@ const Title = styled.Text`
 
 export const MapView = ({ route, navigation }) => {
   const [currentUser] = useContext(UserContext);
+  const map = useRef();
+
+  const [ready, setReady] = useState(false);
   const [location, setLocation] = useState(false);
   console.log('Currently logged in:', currentUser);
 
@@ -56,9 +60,25 @@ export const MapView = ({ route, navigation }) => {
   return (
     <>
       {/* {currentUser && currentUser.name ? currentUser.name : 'Map!'} */}
+
       {location ? (
         // <Title>Location available</Title>
-        <Map location={location} />
+        <>
+          {ready ? (
+            <></>
+          ) : (
+            <Container>
+              <ActivityIndicator size="large" color="#000" />
+            </Container>
+          )}
+
+          <Map
+            location={location}
+            map={map}
+            ready={ready}
+            setReady={setReady}
+          />
+        </>
       ) : (
         <Container>
           <Title>Location must be enabled to find Potties!</Title>
