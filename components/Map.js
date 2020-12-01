@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
@@ -12,6 +12,7 @@ const mapStyles = {
 };
 export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
+  const markerRef = useRef([]);
   const [markers, setMarkers] = useState([]);
   const [currRegion, setRegion] = useState();
   const potties = usePotties(
@@ -25,6 +26,7 @@ export const Map = ({ location, map, ready, setReady }) => {
         potties.map((marker, idx) => (
           <MapView.Marker
             key={idx}
+            ref={(ref) => markerRef.current.push(ref)}
             coordinate={{
               latitude: parseFloat(marker.latitude),
               longitude: parseFloat(marker.longitude),
@@ -70,29 +72,7 @@ export const Map = ({ location, map, ready, setReady }) => {
           longitudeDelta: 0.0121 * 5,
         }}
       >
-        {
-          markers
-          // potties.map((marker, idx) => (
-          //   <Marker
-          //     key={idx}
-          //     coordinate={{
-          //       latitude: parseFloat(marker.latitude),
-          //       longitude: parseFloat(marker.longitude),
-          //     }}
-          //     // title={marker.name}
-          //     // description={`Rating: ${marker.rating}`}
-          //     onCalloutPress={() => navigation.navigate('Potty', marker)}
-          //   >
-          //     <Callout tooltip>
-          //       <InfoWindow
-          //         name={marker.name}
-          //         address={marker.address}
-          //         rating={marker.rating}
-          //       />
-          //     </Callout>
-          //   </Marker>
-          // ))
-        }
+        {markers}
       </MapView>
       <TargetButton onPress={recenter} />
       <PrimaryButton
@@ -104,6 +84,8 @@ export const Map = ({ location, map, ready, setReady }) => {
               latitudeDelta: 0.015 * 0.5,
               longitudeDelta: 0.0121 * 0.5,
             });
+
+            markerRef.current[0].showCallout();
           } else {
             console.log('no potties in the area');
           }
