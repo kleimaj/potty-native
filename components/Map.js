@@ -20,6 +20,14 @@ export const Map = ({ location, map, ready, setReady }) => {
     location.coords.longitude,
   );
 
+  // For adding markers
+  const mapPress = (event) => {
+    const { nativeEvent } = event;
+    if (!nativeEvent.hasOwnProperty('action') && nativeEvent.coordinate) {
+      console.log('MAP CLICK');
+    }
+  };
+
   useEffect(() => {
     if (potties.length) {
       setMarkers(
@@ -63,6 +71,7 @@ export const Map = ({ location, map, ready, setReady }) => {
         style={mapStyles}
         ref={map}
         showsUserLocation
+        onPress={mapPress}
         onMapReady={() => setReady(true)}
         onRegionChangeComplete={(region) => setRegion(region)}
         initialRegion={{
