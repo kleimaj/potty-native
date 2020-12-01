@@ -71,6 +71,8 @@ export const Map = ({ location, map, ready, setReady }) => {
         style={mapStyles}
         ref={map}
         showsUserLocation
+        // removes user callout
+        userLocationAnnotationTitle={null}
         onPress={mapPress}
         onMapReady={() => setReady(true)}
         onRegionChangeComplete={(region) => setRegion(region)}
