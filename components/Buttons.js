@@ -15,9 +15,9 @@ const Link = styled.TouchableOpacity`
 `;
 const IconButton = styled.TouchableOpacity`
   padding: 12px;
-  position: absolute;
-  right: 0;
-  top: 70%;
+  // right: 0;
+  // top: 70%;
+  // position: absolute;
   // align-items: center;
   // border-radius: 50%;
   // margin: 8px 0;
@@ -81,13 +81,27 @@ export const HyperLink = (props) => (
 );
 
 export const TargetButton = (props) => (
-  <IconButton onPress={props.onPress}>
+  <IconButton
+    onPress={props.onPress}
+    style={css`
+      right: 0;
+      top: 70%;
+      position: absolute;
+    `}
+  >
     <TargetIcon />
   </IconButton>
 );
 
 export const AddButton = (props) => (
-  <IconButton onPress={props.onPress}>
+  <IconButton
+    onPress={props.onPress}
+    style={css`
+      right: 0;
+      top: 55%;
+      position: absolute;
+    `}
+  >
     <AddIcon />
   </IconButton>
 );
