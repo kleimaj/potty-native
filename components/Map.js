@@ -86,7 +86,7 @@ export const Map = ({ location, map, ready, setReady }) => {
         {markers}
       </MapView>
       <TargetButton onPress={recenter} />
-      <AddButton />
+      <AddButton onPress={() => setToggleAdd(!toggleAdd)} />
       <PrimaryButton
         onPress={() => {
           if (potties.length) {
