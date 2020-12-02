@@ -29,7 +29,11 @@ export const Map = ({ location, map, ready, setReady }) => {
   // For adding markers
   const mapPress = (event) => {
     const { nativeEvent } = event;
-    if (!nativeEvent.hasOwnProperty('action') && nativeEvent.coordinate) {
+    if (
+      !nativeEvent.hasOwnProperty('action') &&
+      nativeEvent.coordinate &&
+      toggleAdd
+    ) {
       console.log('MAP CLICK');
     }
   };
