@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from '@emotion/native';
 import { Body, HyperLinkText } from '../utils';
-import { TargetIcon } from '../assets';
+import { TargetIcon, AddIcon } from '../assets';
 
 const Button = styled.TouchableOpacity`
   align-items: center;
@@ -83,5 +83,11 @@ export const HyperLink = (props) => (
 export const TargetButton = (props) => (
   <IconButton onPress={props.onPress}>
     <TargetIcon />
+  </IconButton>
+);
+
+export const AddButton = (props) => (
+  <IconButton onPress={props.onPress}>
+    <AddIcon />
   </IconButton>
 );
