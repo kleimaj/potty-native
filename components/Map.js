@@ -38,6 +38,16 @@ export const Map = ({ location, map, ready, setReady }) => {
       toggleAdd
     ) {
       console.log('MAP CLICK');
+      setMarkers((currMarkers) => [
+        ...currMarkers,
+        <MapView.Marker
+          key={markers.length}
+          coordinate={{
+            latitude: nativeEvent.coordinate.latitude,
+            longitude: nativeEvent.coordinate.longitude,
+          }}
+        />,
+      ]);
     }
   };
 
