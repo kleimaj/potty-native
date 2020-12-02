@@ -30,8 +30,11 @@ export const Map = ({ location, map, ready, setReady }) => {
   const mapPress = (event) => {
     const { nativeEvent } = event;
     if (
+      // it's not a marker
       !nativeEvent.hasOwnProperty('action') &&
+      // there are coordinates (it's a map click)
       nativeEvent.coordinate &&
+      // toggleAdd state is on
       toggleAdd
     ) {
       console.log('MAP CLICK');
