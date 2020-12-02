@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SvgXml } from 'react-native-svg';
-import { css } from '@emotion/native';
+// import { css } from '@emotion/native';
 
 export const TargetIcon = () => {
   const icon =
