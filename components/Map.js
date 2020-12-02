@@ -14,6 +14,7 @@ export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
   const markerRef = useRef([]);
   const [markers, setMarkers] = useState([]);
+  const [toggleAdd, setToggleAdd] = useState(false);
   const [, setRegion] = useState();
   const potties = usePotties(
     location.coords.latitude,
@@ -57,7 +58,6 @@ export const Map = ({ location, map, ready, setReady }) => {
   }, [potties, navigation]);
 
   const recenter = () => {
-    console.log(map);
     map.current.animateToRegion({
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
