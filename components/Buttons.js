@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from '@emotion/native';
 import { Body, HyperLinkText } from '../utils';
-import { TargetIcon, AddIcon } from '../assets';
+import { TargetIcon, AddIcon, CancelIcon } from '../assets';
 
 const Button = styled.TouchableOpacity`
   align-items: center;
@@ -103,5 +103,18 @@ export const AddButton = (props) => (
     `}
   >
     <AddIcon />
+  </IconButton>
+);
+
+export const CancelButton = (props) => (
+  <IconButton
+    onPress={props.onPress}
+    style={css`
+      right: 0;
+      top: 55%;
+      position: absolute;
+    `}
+  >
+    <CancelIcon />
   </IconButton>
 );

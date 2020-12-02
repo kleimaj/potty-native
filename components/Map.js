@@ -3,7 +3,12 @@ import { InfoWindow } from './InfoWindow';
 import MapView, { Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
 import { useNavigation } from '@react-navigation/native';
-import { TargetButton, AddButton, PrimaryButton } from './Buttons';
+import {
+  TargetButton,
+  AddButton,
+  CancelButton,
+  PrimaryButton,
+} from './Buttons';
 // import styled from '@emotion/native';
 
 const mapStyles = {
@@ -86,7 +91,11 @@ export const Map = ({ location, map, ready, setReady }) => {
         {markers}
       </MapView>
       <TargetButton onPress={recenter} />
-      <AddButton onPress={() => setToggleAdd(!toggleAdd)} />
+      {toggleAdd ? (
+        <CancelButton onPress={() => setToggleAdd(!toggleAdd)} />
+      ) : (
+        <AddButton onPress={() => setToggleAdd(!toggleAdd)} />
+      )}
       <PrimaryButton
         onPress={() => {
           if (potties.length) {

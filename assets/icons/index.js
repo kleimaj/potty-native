@@ -6,4 +6,5 @@ export * from './SecureIcon';
 export * from './ProfileIcon';
 export * from './TargetIcon';
 export * from './AddIcon';
+export * from './CancelIcon';
 export * from './rating';
