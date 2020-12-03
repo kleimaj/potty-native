@@ -43,6 +43,7 @@ export const Map = ({ location, map, ready, setReady }) => {
         ...currMarkers,
         <MapView.Marker
           key={tempMarkers.length}
+          pinColor={'#f9d117'}
           draggable
           coordinate={{
             latitude: nativeEvent.coordinate.latitude,
