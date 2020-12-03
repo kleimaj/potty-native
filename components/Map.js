@@ -42,7 +42,8 @@ export const Map = ({ location, map, ready, setReady }) => {
       setTempMarkers((currMarkers) => [
         ...currMarkers,
         <MapView.Marker
-          key={markers.length}
+          key={tempMarkers.length}
+          draggable
           coordinate={{
             latitude: nativeEvent.coordinate.latitude,
             longitude: nativeEvent.coordinate.longitude,
