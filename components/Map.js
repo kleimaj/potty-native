@@ -39,7 +39,7 @@ export const Map = ({ location, map, ready, setReady }) => {
       toggleAdd
     ) {
       console.log('MAP CLICK');
-      setMarkers((currMarkers) => [
+      setTempMarkers((currMarkers) => [
         ...currMarkers,
         <MapView.Marker
           key={markers.length}
@@ -107,10 +107,16 @@ export const Map = ({ location, map, ready, setReady }) => {
         }}
       >
         {markers}
+        {tempMarkers}
       </MapView>
       <TargetButton onPress={recenter} />
       {toggleAdd ? (
-        <CancelButton onPress={() => setToggleAdd(!toggleAdd)} />
+        <CancelButton
+          onPress={() => {
+            setTempMarkers();
+            setToggleAdd(!toggleAdd);
+          }}
+        />
       ) : (
         <AddButton onPress={() => setToggleAdd(!toggleAdd)} />
       )}
