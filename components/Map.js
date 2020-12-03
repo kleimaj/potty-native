@@ -19,6 +19,7 @@ export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
   const markerRef = useRef([]);
   const [markers, setMarkers] = useState([]);
+  const [tempMarkers, setTempMarkers] = useState([]);
   const [toggleAdd, setToggleAdd] = useState(false);
   const [, setRegion] = useState();
   const potties = usePotties(
