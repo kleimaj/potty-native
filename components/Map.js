@@ -21,6 +21,7 @@ export const Map = ({ location, map, ready, setReady }) => {
   const [markers, setMarkers] = useState([]);
   const [tempMarkers, setTempMarkers] = useState([]);
   const [toggleAdd, setToggleAdd] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [, setRegion] = useState();
   const potties = usePotties(
     location.coords.latitude,
