@@ -7,7 +7,9 @@ import { EditableRating } from './Rating';
 import { PrimaryButton, SecondaryButton } from './Buttons';
 
 const ModalWrapper = styled.View`
+  display: ${(props) => (props.showModal ? 'flex' : 'none')};
   background: #fff;
+  z-index: 3;
   width: 300px;
   height: 400px;
   position: absolute;

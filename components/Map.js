@@ -52,6 +52,13 @@ export const Map = ({ location, map, ready, setReady }) => {
           }}
         />,
       ]);
+      map.current.animateToRegion({
+        // the offset value we add in the end also depends on the size of the marker
+        latitude: nativeEvent.coordinate.latitude + 0.003,
+        longitude: nativeEvent.coordinate.longitude,
+        latitudeDelta: 0.015 * 0.5,
+        longitudeDelta: 0.0121 * 0.5,
+      });
       setShowModal(true);
     }
   };
@@ -83,6 +90,10 @@ export const Map = ({ location, map, ready, setReady }) => {
       );
     }
   }, [potties, navigation]);
+
+  useEffect(() => {
+    !showModal && tempMarkers.length ? setTempMarkers([]) : 0;
+  }, [showModal]);
 
   const recenter = () => {
     map.current.animateToRegion({
@@ -118,7 +129,7 @@ export const Map = ({ location, map, ready, setReady }) => {
       {toggleAdd ? (
         <CancelButton
           onPress={() => {
-            setTempMarkers();
+            setShowModal(false);
             setToggleAdd(!toggleAdd);
           }}
         />
