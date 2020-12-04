@@ -9,6 +9,7 @@ import {
   CancelButton,
   PrimaryButton,
 } from './Buttons';
+import { AddPottyModal } from './Modals';
 // import styled from '@emotion/native';
 
 const mapStyles = {
