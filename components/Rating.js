@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/native';
+import styled, { css } from '@emotion/native';
 import { StarIcon, StarBlankIcon } from '../assets';
 
 const RatingContainer = styled.View`
@@ -10,8 +10,17 @@ const RatingContainer = styled.View`
   height: 80px;
   // background: black;
 `;
+const EditableRatingContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80px;
+  height: 80px;
+  // background: black;
+`;
 const Touch = styled.TouchableOpacity`
   width: 80px;
+  margin: 64px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -35,7 +44,7 @@ export const Rating = ({ rating }) => (
 
 export const EditableRating = ({ currRating, setCurrRating }) => {
   return (
-    <RatingContainer>
+    <EditableRatingContainer>
       {Array(currRating)
         .fill(1)
         .map((star, idx) => (
@@ -50,6 +59,6 @@ export const EditableRating = ({ currRating, setCurrRating }) => {
             <StarBlankIcon key={idx} />
           </Touch>
         ))}
-    </RatingContainer>
+    </EditableRatingContainer>
   );
 };
