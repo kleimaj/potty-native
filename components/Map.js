@@ -113,6 +113,7 @@ export const Map = ({ location, map, ready, setReady }) => {
         {markers}
         {tempMarkers}
       </MapView>
+      <AddPottyModal showModal={showModal} setShowModal={setShowModal} />
       <TargetButton onPress={recenter} />
       {toggleAdd ? (
         <CancelButton

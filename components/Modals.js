@@ -1,4 +1,5 @@
 import React from 'react';
+import { Modal } from 'react-native';
 import { Subhead } from '../utils';
 import styled from '@emotion/native';
 import { Input } from './Input';
@@ -18,17 +19,21 @@ const ButtonContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const AddPottyModal = () => {
+export const AddPottyModal = ({ showModal, setShowModal }) => {
   return (
     <ModalWrapper>
-      <Subhead>Potty Name</Subhead>
-      <Input />
-      <Subhead>Rating</Subhead>
-      <EditableRating />
-      <ButtonContainer>
-        <PrimaryButton>Create Potty</PrimaryButton>
-        <SecondaryButton>Cancel</SecondaryButton>
-      </ButtonContainer>
+      <Modal visible={showModal}>
+        <Subhead>Potty Name</Subhead>
+        <Input />
+        <Subhead>Rating</Subhead>
+        <EditableRating />
+        <ButtonContainer>
+          <PrimaryButton>Create Potty</PrimaryButton>
+          <SecondaryButton onPress={() => setShowModal(!showModal)}>
+            Cancel
+          </SecondaryButton>
+        </ButtonContainer>
+      </Modal>
     </ModalWrapper>
   );
 };
