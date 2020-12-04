@@ -40,7 +40,6 @@ export const Map = ({ location, map, ready, setReady }) => {
       // toggleAdd state is on
       toggleAdd
     ) {
-      console.log('MAP CLICK');
       setTempMarkers((currMarkers) => [
         ...currMarkers,
         <MapView.Marker
@@ -53,6 +52,7 @@ export const Map = ({ location, map, ready, setReady }) => {
           }}
         />,
       ]);
+      setShowModal(true);
     }
   };
 

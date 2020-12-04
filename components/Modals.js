@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'react-native';
 import { Subhead } from '../utils';
 import styled from '@emotion/native';
@@ -8,9 +8,8 @@ import { PrimaryButton, SecondaryButton } from './Buttons';
 
 const ModalWrapper = styled.View`
   background: #fff;
-  width: 300px;
-  padding: 12px 24px;
-  height: 300px;
+  position: absolute;
+  justify-content: center;
   align-items: center;
 `;
 const ButtonContainer = styled.View`
@@ -20,13 +19,14 @@ const ButtonContainer = styled.View`
 `;
 
 export const AddPottyModal = ({ showModal, setShowModal }) => {
+  const [currRating, setCurrRating] = useState(0);
   return (
     <ModalWrapper>
       <Modal visible={showModal}>
         <Subhead>Potty Name</Subhead>
         <Input />
         <Subhead>Rating</Subhead>
-        <EditableRating />
+        <EditableRating currRating={currRating} setCurrRating={setCurrRating} />
         <ButtonContainer>
           <PrimaryButton>Create Potty</PrimaryButton>
           <SecondaryButton onPress={() => setShowModal(!showModal)}>
