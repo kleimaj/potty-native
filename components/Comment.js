@@ -16,7 +16,7 @@ const Card = styled.View`
 `;
 
 export const Comment = (props) => {
-  const { title, rating, body, author } = props.comment.item;
+  const { rating, body, author } = props.comment.item;
   return (
     <Container>
       <Card>
@@ -26,7 +26,7 @@ export const Comment = (props) => {
             align-self: flex-start;
           `}
         >
-          {title}
+          Title
         </Small>
         <Rating rating={parseInt(rating, 10)} />
         <Smallest>{body}</Smallest>

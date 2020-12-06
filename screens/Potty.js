@@ -39,7 +39,7 @@ export const Potty = ({ route, navigation }) => {
   const { comments, addComment } = useComments(potty.id);
   const [currentUser] = useContext(UserContext);
 
-  const [title, setTitle] = useState('');
+  // const [title, setTitle] = useState('');
   const [currRating, setCurrRating] = useState(0);
   const [body, setBody] = useState('');
 
@@ -71,8 +71,8 @@ export const Potty = ({ route, navigation }) => {
           <Scroll>
             <Small>Add a comment</Small>
             <Inputs>
-              <Smallest>Title</Smallest>
-              <Input onChangeText={setTitle} value={title} />
+              {/* <Smallest>Title</Smallest>
+              <Input onChangeText={setTitle} value={title} /> */}
               <EditableRating
                 currRating={currRating}
                 setCurrRating={setCurrRating}
@@ -82,7 +82,7 @@ export const Potty = ({ route, navigation }) => {
               <PrimaryButton
                 onPress={() =>
                   addComment({
-                    title,
+                    // title,
                     body,
                     pottyId: potty.id,
                     rating: currRating,

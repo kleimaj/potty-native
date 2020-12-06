@@ -13,12 +13,9 @@ const REACT_APP_API_URL = `http://${manifest.debuggerHost
 export const useComments = (id) => {
   const [comments, setComments] = useState([]);
   const addComment = async (data) => {
-    if (!data.body || !data.title) {
+    if (!data.body) {
       // Alert
-      Alert.alert(
-        'Cannot Add Comment',
-        'Please include Title and Body content.',
-      );
+      Alert.alert('Cannot Add Comment', 'Please include Body content.');
     }
     try {
       const res = await fetch(`${REACT_APP_API_URL}/comment`, {
