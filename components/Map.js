@@ -77,28 +77,48 @@ export const Map = ({ location, map, ready, setReady }) => {
             onPress={(e) => {
               e.stopPropagation();
               const { nativeEvent } = e;
-
-              console.log(nativeEvent);
+              map.current.animateToRegion({
+                // the offset value we add in the end also depends on the size of the marker
+                latitude: nativeEvent.coordinate.latitude + 0.003,
+                longitude: nativeEvent.coordinate.longitude,
+                // latitudeDelta: 0.015 * 0.5,
+                // longitudeDelta: 0.0121 * 0.5,
+              });
             }}
             // title={marker.name}
             // description={`Rating: ${marker.rating}`}
             // onCalloutPress={() => navigation.navigate('Potty', marker)}
-          />
-          //   <Callout tooltip>
-          //     <InfoWindow
-          //       name={marker.name}
-          //       address={marker.address}
-          //       rating={marker.rating}
-          //     />
-          //   </Callout>
-          // </MapView.Marker>
+          >
+            <Callout
+              tooltip
+              onPress={(e) => {
+                e.stopPropagation();
+                // console.log(e);
+                console.log(e.nativeEvent.point);
+                if (e.nativeEvent.point.y < 175) {
+                  // console.log('Address Click');
+                } else {
+                  // console.log('Details Click');
+                  navigation.navigate('Potty', marker);
+                }
+              }}
+            >
+              <InfoWindow
+                name={marker.name}
+                address={marker.address}
+                rating={marker.rating}
+              />
+            </Callout>
+          </MapView.Marker>
         )),
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [potties, navigation]);
 
   useEffect(() => {
     !showModal && tempMarkers.length ? setTempMarkers([]) : 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showModal]);
 
   const recenter = () => {

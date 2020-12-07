@@ -76,7 +76,9 @@ export const InfoWindow = ({ name, address, rating }) => {
             <Rating rating={rating} />
           </RatingContainer>
         </ItemContainer>
-        <PrimaryButton>View Details</PrimaryButton>
+        <PrimaryButton onPress={(e) => console.log(e)}>
+          View Details
+        </PrimaryButton>
       </Bubble>
       <ArrowBorder />
       <Arrow />
