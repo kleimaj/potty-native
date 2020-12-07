@@ -162,7 +162,12 @@ export const Map = ({ location, map, ready, setReady }) => {
           }}
         />
       ) : (
-        <AddButton onPress={() => setToggleAdd(!toggleAdd)} />
+        <AddButton
+          onPress={() => {
+            setShowModal(true);
+            // setToggleAdd(!toggleAdd);
+          }}
+        />
       )}
       <PrimaryButton
         onPress={() => {

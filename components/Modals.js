@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import { Subhead } from '../utils';
 import styled from '@emotion/native';
-import { Input } from './Input';
+import { DefaultInput } from './Input';
 import { EditableRating } from './Rating';
 import { PrimaryButton, SecondaryButton } from './Buttons';
 
@@ -30,7 +30,7 @@ export const AddPottyModal = ({ showModal, setShowModal }) => {
   return (
     <ModalWrapper width={width} height={height} showModal={showModal}>
       <Subhead>Potty Name</Subhead>
-      <Input />
+      <DefaultInput />
       <Subhead>Rating</Subhead>
       <EditableRating currRating={currRating} setCurrRating={setCurrRating} />
       <ButtonContainer>
