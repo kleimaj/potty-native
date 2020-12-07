@@ -74,18 +74,24 @@ export const Map = ({ location, map, ready, setReady }) => {
               latitude: parseFloat(marker.latitude),
               longitude: parseFloat(marker.longitude),
             }}
+            onPress={(e) => {
+              e.stopPropagation();
+              const { nativeEvent } = e;
+
+              console.log(nativeEvent);
+            }}
             // title={marker.name}
             // description={`Rating: ${marker.rating}`}
-            onCalloutPress={() => navigation.navigate('Potty', marker)}
-          >
-            <Callout tooltip>
-              <InfoWindow
-                name={marker.name}
-                address={marker.address}
-                rating={marker.rating}
-              />
-            </Callout>
-          </MapView.Marker>
+            // onCalloutPress={() => navigation.navigate('Potty', marker)}
+          />
+          //   <Callout tooltip>
+          //     <InfoWindow
+          //       name={marker.name}
+          //       address={marker.address}
+          //       rating={marker.rating}
+          //     />
+          //   </Callout>
+          // </MapView.Marker>
         )),
       );
     }
