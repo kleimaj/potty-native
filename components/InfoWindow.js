@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from '@emotion/native';
 import { Subhead, Small, HyperLinkText } from '../utils';
+import { PrimaryButton } from './Buttons';
 
 import { Rating } from './Rating';
 
@@ -14,11 +15,13 @@ const ItemContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 280px;
+  margin: 10px;
   padding: 12px;
 `;
 const RatingContainer = styled.View`
   display: flex;
-  margin-right: 90px;
+  margin-right: 50px;
+  height: 0;
 `;
 const ItemHeader = styled(Small)`
   font-weight: bold;
@@ -73,6 +76,7 @@ export const InfoWindow = ({ name, address, rating }) => {
             <Rating rating={rating} />
           </RatingContainer>
         </ItemContainer>
+        <PrimaryButton>View Details</PrimaryButton>
       </Bubble>
       <ArrowBorder />
       <Arrow />

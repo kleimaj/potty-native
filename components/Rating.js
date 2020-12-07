@@ -5,7 +5,7 @@ import { StarIcon, StarBlankIcon } from '../assets';
 const RatingContainer = styled.View`
   flex-direction: row;
   // align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 80px;
   height: 80px;
   // background: black;
