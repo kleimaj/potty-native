@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from '@emotion/native';
+import styled from '@emotion/native';
 import { StarIcon, StarBlankIcon } from '../assets';
 
 const RatingContainer = styled.View`

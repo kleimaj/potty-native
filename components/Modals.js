@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { Subhead } from '../utils';
 import styled from '@emotion/native';
 import { Input } from './Input';
