@@ -13,6 +13,7 @@ const ModalWrapper = styled.View`
   width: 300px;
   height: 400px;
   position: absolute;
+  border-radius: 12px;
   left: ${(props) => (props.width / 10).toString()};
   top: ${(props) => (props.height / 10).toString()};
   justify-content: center;
@@ -21,20 +22,24 @@ const ModalWrapper = styled.View`
 const ButtonContainer = styled.View`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const AddPottyModal = ({ showModal, setShowModal }) => {
   const { width, height } = Dimensions.get('screen');
+  const [name, setName] = useState('');
   const [currRating, setCurrRating] = useState(0);
+  const [location, setLocation] = useState({});
   return (
     <ModalWrapper width={width} height={height} showModal={showModal}>
       <Subhead>Potty Name</Subhead>
-      <DefaultInput />
+      <DefaultInput setText={setName} value={name} />
       <Subhead>Rating</Subhead>
       <EditableRating currRating={currRating} setCurrRating={setCurrRating} />
+      <Subhead>Location</Subhead>
+
       <ButtonContainer>
-        <PrimaryButton>Create Potty</PrimaryButton>
+        <PrimaryButton>Add Potty</PrimaryButton>
         <SecondaryButton onPress={() => setShowModal(!showModal)}>
           Cancel
         </SecondaryButton>
