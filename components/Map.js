@@ -3,6 +3,7 @@ import { InfoWindow } from './InfoWindow';
 import MapView, { Callout } from 'react-native-maps';
 import { usePotties } from '../hooks';
 import { useNavigation } from '@react-navigation/native';
+import { Platform, Linking } from 'react-native';
 import {
   TargetButton,
   AddButton,
@@ -97,6 +98,18 @@ export const Map = ({ location, map, ready, setReady }) => {
                 console.log(e.nativeEvent.point);
                 if (e.nativeEvent.point.y < 175) {
                   // console.log('Address Click');
+                  Platform.select({
+                    ios: () => {
+                      Linking.openURL(
+                        `http://maps.apple.com/maps?daddr=${marker.address}`,
+                      );
+                    },
+                    android: () => {
+                      Linking.openURL(
+                        `http://maps.google.com/maps?daddr=${marker.address}`,
+                      );
+                    },
+                  });
                 } else {
                   // console.log('Details Click');
                   navigation.navigate('Potty', marker);
