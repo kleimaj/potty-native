@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from '@emotion/native';
-import { Subhead, HyperLinkText } from '../utils';
+import styled, { css } from '@emotion/native';
+import { Subhead, Small, HyperLinkText } from '../utils';
 
 import { Rating } from './Rating';
 
@@ -9,7 +9,20 @@ const Window = styled.View`
   //   position: relative;
   //   padding: 30px 10px;
 `;
-
+const ItemContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 280px;
+  padding: 12px;
+`;
+const RatingContainer = styled.View`
+  display: flex;
+  margin-right: 90px;
+`;
+const ItemHeader = styled(Small)`
+  font-weight: bold;
+`;
 const Bubble = styled.View`
   flex-direction: column;
   align-self: flex-start;
@@ -19,7 +32,7 @@ const Bubble = styled.View`
   border-color: #ccc;
   border-width: 0.5px;
   padding: 15px;
-  width: 180px;
+  width: 280px;
 `;
 const ArrowBorder = styled.View`
   background-color: transparent;
@@ -43,8 +56,23 @@ export const InfoWindow = ({ name, address, rating }) => {
     <Window>
       <Bubble>
         <Subhead>{name}</Subhead>
-        <Rating rating={rating} />
-        <HyperLinkText>{address}</HyperLinkText>
+        <ItemContainer>
+          <ItemHeader>Location</ItemHeader>
+          <HyperLinkText
+            style={css`
+              width: 170px;
+              text-decoration: underline;
+            `}
+          >
+            {address}
+          </HyperLinkText>
+        </ItemContainer>
+        <ItemContainer>
+          <ItemHeader>Rating</ItemHeader>
+          <RatingContainer>
+            <Rating rating={rating} />
+          </RatingContainer>
+        </ItemContainer>
       </Bubble>
       <ArrowBorder />
       <Arrow />

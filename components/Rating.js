@@ -4,8 +4,8 @@ import { StarIcon, StarBlankIcon } from '../assets';
 
 const RatingContainer = styled.View`
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  justify-content: space-between;
   width: 80px;
   height: 80px;
   // background: black;
