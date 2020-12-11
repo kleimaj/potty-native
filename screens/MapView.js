@@ -19,7 +19,6 @@ export const MapView = ({ route, navigation }) => {
 
   const [ready, setReady] = useState(false);
   const [location, setLocation] = useState(false);
-  console.log('Currently logged in:', currentUser);
 
   const getLocation = async () => {
     try {
