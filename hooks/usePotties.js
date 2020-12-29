@@ -12,8 +12,10 @@ export const usePotties = (lat, lng) => {
   const [potties, setPotties] = useState([]);
 
   useEffect(() => {
-    async function getPotties(lat, lng) {
-      const res = await fetch(`${REACT_APP_API_URL}/potty/${lat}/${lng}`);
+    async function getPotties(latitude, longitude) {
+      const res = await fetch(
+        `${REACT_APP_API_URL}/potty/${latitude}/${longitude}`,
+      );
       const returnedPotties = await res.json();
       console.log(returnedPotties);
       setPotties(returnedPotties);
