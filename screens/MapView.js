@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import { UserContext } from '../hooks';
+import React, { useState, useEffect, useRef } from 'react';
 import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import { PrimaryButton, Map } from '../components';
@@ -14,7 +13,6 @@ const Title = styled.Text`
 `;
 
 export const MapView = ({ route, navigation }) => {
-  const [currentUser] = useContext(UserContext);
   const map = useRef();
 
   const [ready, setReady] = useState(false);

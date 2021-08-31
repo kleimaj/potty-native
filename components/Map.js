@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { UserContext } from '../hooks';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Callout } from 'react-native-maps';
-import { usePotties } from '../hooks';
+import { usePotties, userContext } from '../hooks';
 import { useNavigation } from '@react-navigation/native';
 import openMap from 'react-native-open-maps';
 import {
@@ -19,6 +20,8 @@ const mapStyles = {
 };
 export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
+  const [currentUser] = useContext(UserContext);
+  console.log(currentUser)
   const markerRef = useRef([]);
   const [markers, setMarkers] = useState([]);
   const [tempMarkers, setTempMarkers] = useState([]);
@@ -62,6 +65,27 @@ export const Map = ({ location, map, ready, setReady }) => {
       });
       setShowModal(true);
     }
+  };
+
+  const showAddButton = () => {
+    if (currentUser && currentUser.name) {
+      return toggleAdd ? (
+        <CancelButton
+          onPress={() => {
+            setShowModal(false);
+            setToggleAdd(!toggleAdd);
+          }}
+        />
+      ) : (
+        <AddButton
+          onPress={() => {
+            setShowModal(true);
+            // setToggleAdd(!toggleAdd);
+          }}
+        />
+      );
+    }
+    return;
   };
 
   useEffect(() => {
@@ -154,21 +178,7 @@ export const Map = ({ location, map, ready, setReady }) => {
       </MapView>
       <AddPottyModal showModal={showModal} setShowModal={setShowModal} />
       <TargetButton onPress={recenter} />
-      {toggleAdd ? (
-        <CancelButton
-          onPress={() => {
-            setShowModal(false);
-            setToggleAdd(!toggleAdd);
-          }}
-        />
-      ) : (
-        <AddButton
-          onPress={() => {
-            setShowModal(true);
-            // setToggleAdd(!toggleAdd);
-          }}
-        />
-      )}
+      {showAddButton()}
       <PrimaryButton
         onPress={() => {
           if (potties.length) {
