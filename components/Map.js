@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { UserContext } from '../hooks';
 import { InfoWindow } from './InfoWindow';
 import MapView, { Callout } from 'react-native-maps';
-import { usePotties, userContext } from '../hooks';
+import { usePotties, UserContext } from '../hooks';
 import { useNavigation } from '@react-navigation/native';
 import openMap from 'react-native-open-maps';
 import {
@@ -12,7 +11,6 @@ import {
   PrimaryButton,
 } from './Buttons';
 import { AddPottyModal } from './Modals';
-// import styled from '@emotion/native';
 
 const mapStyles = {
   flex: 2,
@@ -21,7 +19,6 @@ const mapStyles = {
 export const Map = ({ location, map, ready, setReady }) => {
   const navigation = useNavigation();
   const [currentUser] = useContext(UserContext);
-  console.log(currentUser)
   const markerRef = useRef([]);
   const [markers, setMarkers] = useState([]);
   const [tempMarkers, setTempMarkers] = useState([]);
