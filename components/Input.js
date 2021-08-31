@@ -2,6 +2,10 @@ import React from 'react';
 import styled from '@emotion/native';
 import { EmailIcon, NameIcon, PasswordIcon, SecureIcon } from '../assets';
 
+const Flex = styled.View`
+  display: flex;
+`;
+
 export const Input = styled.TextInput`
   border-bottom-width: 2;
   border-bottom-color: #ccc;
