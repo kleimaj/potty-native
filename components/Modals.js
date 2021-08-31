@@ -29,7 +29,7 @@ export const AddPottyModal = ({ showModal, setShowModal }) => {
   const { width, height } = Dimensions.get('screen');
   const [name, setName] = useState('');
   const [currRating, setCurrRating] = useState(0);
-  const [location, setLocation] = useState({});
+  // const [location, setLocation] = useState({});
   return (
     <ModalWrapper width={width} height={height} showModal={showModal}>
       <Subhead>Potty Name</Subhead>

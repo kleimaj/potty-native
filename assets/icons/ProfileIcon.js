@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SvgXml } from 'react-native-svg';
-import { css } from '@emotion/native';
 
 const newLocal = `<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="160" height="160" fill="url(#pattern0)"/>
